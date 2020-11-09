@@ -25,10 +25,25 @@ human
 
 CREATURES
 
+man
+2
+2
+sentry
+
 maid
-1
-1
+8
+3
 wander
+
+peasant
+3
+5
+sentry
+
+peasant
+5
+5
+sentry
 
 PORTALS
 

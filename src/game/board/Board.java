@@ -162,21 +162,34 @@ public class Board {
 		else if(type.equals("knight")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("knights");
-			this.equipItem(spawn, "knight helm");
-			this.equipItem(spawn, "breastplate");
-			this.equipItem(spawn, "knight boots");
+			this.equipItem(spawn, "knightHelm");
+			this.equipItem(spawn, "breastPlate");
+			this.equipItem(spawn, "knightBoots");
 		}
 		else if(type.equals("fool")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setInvincible(true);
-			this.equipItem(spawn, "fools hat");
-			this.equipItem(spawn, "green peasant gown");
+			// this.equipItem(spawn, "fools hat");
+			this.equipItem(spawn, "peasantGownBrown");
+		}
+		else if(type.equals("man")) {
+			spawn  = new Humanoid(tile, "human");
+			this.equipItem(spawn, "peasantGownBrown");
+
+			spawn.setTag("man");
+		}
+		else if(type.equals("peasant")) {
+			spawn  = new Humanoid(tile, "human");
+			this.equipItem(spawn, "peasantHat");
+			this.equipItem(spawn, "peasantGownBrown");
+
+			spawn.setTag("peasant");
 		}
 		else if(type.equals("woodcutter")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("woodcutters");
-			this.equipItem(spawn, "peasant hat");
-			this.equipItem(spawn, "green peasant gown");
+			this.equipItem(spawn, "peasantHat");
+			this.equipItem(spawn, "peasantGownBrown");
 			this.equipItem(spawn, "axe");
 
 			spawn.setTag("woodcutter");
@@ -184,8 +197,8 @@ public class Board {
 		else if(type.equals("miner")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("miners");
-			this.equipItem(spawn, "peasant hat");
-			this.equipItem(spawn, "gray peasant gown");
+			this.equipItem(spawn, "peasantHat");
+			this.equipItem(spawn, "peasantGownBrown");
 			this.equipItem(spawn, "pickaxe");
 
 			spawn.setTag("miner");
@@ -193,8 +206,8 @@ public class Board {
 		else if(type.equals("hunter")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("hunters");
-			this.equipItem(spawn, "peasant hat");
-			this.equipItem(spawn, "brown peasant gown");
+			this.equipItem(spawn, "peasantHat");
+			this.equipItem(spawn, "peasantGownBrown");
 			this.equipItem(spawn, "bow");
 
 			spawn.setTag("woodcutter");

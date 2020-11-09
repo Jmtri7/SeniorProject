@@ -17,6 +17,7 @@ import engine.audio.SoundClip;
 import game.board.Board;
 import game.board.Route;
 import game.board.Terrain;
+import game.board.Tile;
 import game.entities.Creature;
 import game.entities.Humanoid;
 import game.entities.Projectile;
@@ -390,18 +391,28 @@ public class BoardBuilder {
 			}
 
 			if(line.equals("ROUTES")) {
-
-				// Route orcPatrol = new Route(
-				//  	"orc patrol", 
-				//  	Arrays.asList(
-				// 		gameBoard.getTile(1, 1),
-				// 		gameBoard.getTile(2, 1),
-				// 		gameBoard.getTile(2, 2),
-				// 		gameBoard.getTile(1, 2)
-				//   	)
-				// );
-				
+				scanner.nextLine();
+				line = scanner.nextLine();
 				while(!line.equals("CRITTERS")) {
+					String name = line;
+
+					ArrayList<Tile> route = new ArrayList<Tile>();
+
+					int x, y;
+					line = scanner.nextLine();
+					while(!line.equals("end")) {
+						x = Integer.parseInt(line);
+						line = scanner.nextLine();
+						y = Integer.parseInt(line);
+
+						route.add(gameBoard.getTile(x, y));
+
+						line = scanner.nextLine();
+					}
+
+					new Route(name, route);
+
+					scanner.nextLine();
 					line = scanner.nextLine();
 				}
 			}
@@ -493,11 +504,27 @@ public class BoardBuilder {
 					line = scanner.nextLine();
 					String ai = line;
 
-					gameBoard.spawn(
-						x, y,
-						type,
-						ai
-					);
+					if(ai.equals("wander")) {
+						gameBoard.spawn(
+							x, y,
+							type,
+							ai
+						);
+					} else if(ai.equals("patrol")) {
+						gameBoard.spawn(
+							x, y,
+							type,
+							Route.get(scanner.nextLine())
+						);
+					} else if(ai.equals("sentry")) {
+						gameBoard.spawn(
+							x, y,
+							type,
+							Arrays.asList(
+								gameBoard.getTile(x, y)
+							)
+						);
+					}
 
 					scanner.nextLine();
 					line = scanner.nextLine();
@@ -541,12 +568,6 @@ public class BoardBuilder {
 			// 	new ImageTile("../../res/items/blueJewel.png", 20, 20),
 			// 	"consumable",
 			// 	"scrollFireNova"
-			// );
-
-			// gameBoard.spawn(
-			// 	34, 90,
-			// 	"death clan warrior", 
-			// 	chief
 			// );
 
 			// gameBoard.spawn(

@@ -8,7 +8,38 @@ ZONES
 
 ROUTES
 
+city path
+1
+13
+10
+13
+20
+13
+26
+13
+26
+1
+26
+13
+20
+13
+10
+13
+end
+
 CRITTERS
+
+man
+2
+grass
+
+peasant
+2
+grass
+
+maid
+2
+grass
 
 PLAYER
 
@@ -17,6 +48,12 @@ human
 11
 
 CREATURES
+
+knight
+1
+13
+patrol
+city path
 
 PORTALS
 

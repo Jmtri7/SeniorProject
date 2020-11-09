@@ -10,6 +10,18 @@ ROUTES
 
 CRITTERS
 
+man
+1
+grass
+
+peasant
+1
+grass
+
+maid
+1
+grass
+
 PLAYER
 
 human
