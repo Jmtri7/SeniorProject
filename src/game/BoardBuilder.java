@@ -1,0 +1,579 @@
+package game;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
+import engine.gfx.Image;
+import engine.gfx.ImageTile;
+import engine.gfx.Light;
+import engine.audio.SoundClip;
+
+import game.board.Board;
+import game.board.Route;
+import game.board.Terrain;
+import game.entities.Creature;
+import game.entities.Humanoid;
+import game.entities.Projectile;
+import game.entities.Item;
+import game.entities.Equipment;
+import game.entities.Inventory;
+import game.entities.Species;
+import game.entities.Faction;
+import game.entities.Wall;
+import game.entities.Portal;
+
+public class BoardBuilder {
+	static void SavePlayer(Creature pc) {
+		try {
+			FileWriter saveWriter = new FileWriter("classes/res/save/player.txt");
+
+			// get data
+
+			String species = pc.getSpecies().getType();
+			String faction = pc.getFaction().getName();
+			float speed =  pc.getWalkSpeed();
+
+			String saveData =
+				species + "\n"
+				+ faction + "\n"
+				+ speed + "\n"
+				+ "\n";
+
+			// equipment
+
+			ArrayList<Item> items = pc.getInventory().getItems();
+			for(int i = 0; i < items.size(); i++) {
+				saveData +=
+					items.get(i).getTag() + "\n"
+					+ items.get(i).getType() + "\n"
+					+ items.get(i).isEquipped() + "\n"
+					+ "\n";
+			}
+
+			saveData += "END";
+
+      		saveWriter.write(saveData);
+      		saveWriter.close();
+		} catch (IOException e) {
+			System.out.println("Failed to write save.");
+			e.printStackTrace();
+		}
+
+	}
+
+	static Creature LoadPlayer(Board gameBoard, int spawnX, int spawnY) {
+		Creature pc;
+
+		try {
+			File assetData = new File("classes/res/save/player.txt");
+			Scanner scanner = new Scanner(assetData);
+			String line = "";
+
+			// get data
+
+			String species = scanner.nextLine();
+
+			String faction = scanner.nextLine();
+
+			line = scanner.nextLine();
+			float speed = Float.parseFloat(line);
+
+			pc  = new Humanoid(gameBoard.getTile(spawnX, spawnY), species);
+			pc.setFaction(faction);
+			pc.setWalkSpeed(speed);
+
+			pc.setTag("player");
+			
+			scanner.nextLine();
+			line = scanner.nextLine();
+			while(!line.equals("END")) {
+				String itemName = line;
+
+				String type = scanner.nextLine();
+
+				line = scanner.nextLine();
+				Boolean isEquipped = Boolean.parseBoolean(line);
+
+				if(isEquipped) {
+					gameBoard.equipItem(pc, itemName);
+				} else if(type.equals("equipment")) {
+					gameBoard.giveEquipment(pc, itemName);
+				}
+
+				// handle loading of other types
+
+				scanner.nextLine();
+				line = scanner.nextLine();
+			}
+
+			gameBoard.setPlayer(pc);
+			gameBoard.getCamera().setTarget(pc);
+
+			scanner.close();
+		} catch(FileNotFoundException e) {
+			System.out.println("Map data not found.");
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	static void LoadAssets() {
+		try {
+			File assetData = new File("classes/res/world/assetData.txt");
+			Scanner scanner = new Scanner(assetData);
+			String line = "";
+
+			line = scanner.nextLine();
+			if(line.equals("STRUCTURES")) {
+				scanner.nextLine();
+
+				String name;
+				int tileX;
+				int tileY;
+
+				line = scanner.nextLine();
+				while(!line.equals("TILESET")) {
+
+					name = line;
+
+					line = scanner.nextLine();
+					tileX = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					tileY = Integer.parseInt(line);
+
+					Wall.createWallType(name, tileX, tileY);
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			if(line.equals("TILESET")) {
+				scanner.nextLine();
+
+				// get the first tile type
+				line = scanner.nextLine();
+				while(!line.equals("SPECIES")) {
+					String name = line;
+
+					line = scanner.nextLine();
+					String lightColor = line;
+
+					line = scanner.nextLine();
+					boolean blocked = Boolean.parseBoolean(line);
+
+					if(lightColor.equals("null"))
+						new Terrain(name, new Image("../../res/tile/" + name + ".png"), null, blocked);
+					else
+						new Terrain(name, new Image("../../res/tile/" + name + ".png"), 0xff000000 | Integer.parseInt(lightColor, 16), blocked);
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			// HARD-CODED DATA
+			// INTEGRATE WITH BUILDER
+
+			new Projectile(
+				new ImageTile("../../res/projectile/arrow.png", 20, 40),
+				"arrow",
+				1
+			);
+
+			new Projectile(
+				new ImageTile("../../res/projectile/firebolt.png", 20, 40),
+				"firebolt",
+				10
+			);
+
+			if(line.equals("SPECIES")) {
+				scanner.nextLine();
+
+				line = scanner.nextLine();
+				while(!line.equals("FACTIONS")) {
+					String name = line;
+
+					line = scanner.nextLine();
+					int tileX = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int tileY = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int hp = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int dmg = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int lightColor = 0xff000000 | Integer.parseInt(line, 16);
+
+					line = scanner.nextLine();
+					SoundClip injurySound;
+					if(line.equals("null")) injurySound = null;
+					else injurySound = new SoundClip("../../res/sounds/" + line + ".wav");
+
+					line = scanner.nextLine();
+					SoundClip deathSound;
+					if(line.equals("null")) deathSound = null;
+					else deathSound = new SoundClip("../../res/sounds/" + line + ".wav");
+
+					line = scanner.nextLine();
+					SoundClip attackSound;
+					if(line.equals("null")) attackSound = null;
+					else attackSound = new SoundClip("../../res/sounds/" + line + ".wav");
+
+					line = scanner.nextLine();
+
+					new Species(
+						name,
+						hp, dmg,
+						new ImageTile("../../res/creature/" + name + ".png", tileX, tileY),
+						new Light(80, lightColor),
+						injurySound,
+						deathSound,
+						attackSound,
+						null
+						);
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			if(line.equals("FACTIONS")) {
+				scanner.nextLine();
+
+				// get first faction name
+				line = scanner.nextLine();
+				while(!line.equals("EQUIPMENT")) {
+					String faction = line;
+
+					ArrayList<String> enemies = new ArrayList<String>();
+
+					line = scanner.nextLine();
+					while(!line.equals("end")) {
+						enemies.add(line);
+
+						line = scanner.nextLine();
+					}
+
+					new Faction(faction, enemies);
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			if(line.equals("EQUIPMENT")) {
+				scanner.nextLine();
+
+				line = scanner.nextLine();
+				while(!line.equals("END")) {
+					String name = line;
+
+					line = scanner.nextLine();
+					String equipmentType = line;
+
+					line = scanner.nextLine();
+					int dmgModifier = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					float armorModifier = Float.parseFloat(line);
+
+					line = scanner.nextLine();
+					String damageType = line;
+
+					Equipment.create(
+						new ImageTile("../../res/items/" + name + ".png", 60, 60),
+						name,
+						equipmentType,
+						dmgModifier,
+						armorModifier,
+						damageType
+					);
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			scanner.close();
+		} catch(FileNotFoundException e) {
+			System.out.println("Map data not found.");
+			e.printStackTrace();
+		}
+	}
+
+	static Board BuildBoard(String mapName) {
+		return BuildBoard(mapName, -1, -1);
+	}
+
+	static Board BuildBoard(String mapName, int spawnX, int spawnY) {
+		Board gameBoard = null;
+
+		try {
+			File mapData = new File("classes/res/world/" + mapName + "/mapData.txt");
+			Scanner scanner = new Scanner(mapData);
+			String line = "";
+
+			line = scanner.nextLine();
+			if(line.equals("BOARD")) {
+				scanner.nextLine();
+				int tileSize = Integer.parseInt(scanner.nextLine());
+
+				line = scanner.nextLine();
+				int ambientColor = 0xff000000 | Integer.parseInt(line, 16);
+
+				String music = scanner.nextLine();
+
+				// board layout
+				gameBoard = new Board(
+					new Image("../../res/world/" + mapName + "/tileMap.png"),
+					new Image("../../res/world/" + mapName + "/structureMap.png"),
+					tileSize
+					);
+
+				gameBoard.setDefaultAmbientColor(ambientColor);
+				gameBoard.setDefaultMusic(music);
+
+				scanner.nextLine();
+				line = scanner.nextLine();
+			}
+
+			if(line.equals("ZONES")) {
+				scanner.nextLine();
+
+				line = scanner.nextLine();
+				while(!line.equals("ROUTES")) {
+					int x = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int y = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int width = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int height = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int ambientColor = 0xff000000 | Integer.parseInt(line, 16);
+
+					line = scanner.nextLine();
+					SoundClip music;
+					if(line.equals("null")) music = null;
+					else music = new SoundClip("../../res/music/" + line + ".wav");
+
+					gameBoard.addZone(
+						x, y,
+						width, height,
+						ambientColor,
+						music
+						);
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			if(line.equals("ROUTES")) {
+
+				// Route orcPatrol = new Route(
+				//  	"orc patrol", 
+				//  	Arrays.asList(
+				// 		gameBoard.getTile(1, 1),
+				// 		gameBoard.getTile(2, 1),
+				// 		gameBoard.getTile(2, 2),
+				// 		gameBoard.getTile(1, 2)
+				//   	)
+				// );
+				
+				while(!line.equals("CRITTERS")) {
+					line = scanner.nextLine();
+				}
+			}
+
+			if(line.equals("CRITTERS")) {
+				scanner.nextLine();
+
+				// add flora section
+				for(int j = 0; j < gameBoard.getHeight(); j++) {
+					for(int i = 0; i < gameBoard.getWidth(); i++) {
+						if(
+							gameBoard.getTile(i, j).getTerrain() != null
+							&& gameBoard.getTile(i, j).getTerrain().getType().equals("grass")
+							&& !gameBoard.getTile(i, j).isBlocked()
+						) {
+							int random = (int) (100 * Math.random()) + 1;
+							if(random <= 10) {
+								gameBoard.addPlant(i, j);
+							}
+						}	
+					}
+				}
+				
+				line = scanner.nextLine();
+				while(!line.equals("PLAYER")) {
+					String species = line;
+
+					line = scanner.nextLine();
+					int maxPop = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					String terrain = line;
+
+					int pop = 0;
+					while(pop < maxPop) {
+						int randomX = (int) (gameBoard.getWidth() * Math.random());
+						int randomY = (int) (gameBoard.getWidth() * Math.random());
+						if(
+							gameBoard.getTile(randomX, randomY).getTerrain().getType().equals(terrain)
+							&& !gameBoard.getTile(randomX, randomY).isBlocked()
+						) {
+							gameBoard.spawn(randomX, randomY, species, "wander");
+							pop++;
+						}
+					}
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			if(line.equals("PLAYER")) {
+				scanner.nextLine();
+
+				line = scanner.nextLine();
+				String species = line; 
+					
+				line = scanner.nextLine();
+				if(spawnX == -1)
+					spawnX = Integer.parseInt(line);
+
+				line = scanner.nextLine();
+				if(spawnY == -1)
+					spawnY = Integer.parseInt(line);
+
+				//System.out.println("teleport to " + spawnX + ", " + spawnY);
+				
+				// player
+				//gameBoard.spawn(spawnX, spawnY, "player", "player");
+				LoadPlayer(gameBoard, spawnX, spawnY);
+
+				scanner.nextLine();
+				line = scanner.nextLine();
+			}
+
+			if(line.equals("CREATURES")) {
+				scanner.nextLine();
+
+				line = scanner.nextLine();
+				while(!line.equals("PORTALS")) {
+					String type = line; 
+					
+					line = scanner.nextLine();
+					int x = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int y = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					String ai = line;
+
+					gameBoard.spawn(
+						x, y,
+						type,
+						ai
+					);
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			if(line.equals("PORTALS")) {
+				scanner.nextLine();
+
+				line = scanner.nextLine();
+				while(!line.equals("END")) {
+					String destination = line; 
+					
+					line = scanner.nextLine();
+					int x = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int y = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int outX = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int outY = Integer.parseInt(line);
+
+					//System.out.println("out to " + outX + ", " + outY);
+
+					new Portal(gameBoard.getTile(x, y), destination, outX, outY);
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
+			// HARD-CODED DATA
+			// INTEGRATE WITH BUILDER
+
+			// gameBoard.placeItem(
+			// 	1,
+			// 	1,
+			// 	new ImageTile("../../res/items/blueJewel.png", 20, 20),
+			// 	"consumable",
+			// 	"scrollFireNova"
+			// );
+
+			// gameBoard.spawn(
+			// 	34, 90,
+			// 	"death clan warrior", 
+			// 	chief
+			// );
+
+			// gameBoard.spawn(
+			// 	35, 90,
+			// 	"death clan warrior", 
+			// 	chief
+			// );
+
+			// gameBoard.spawn(
+			// 	125, 171,
+			// 	"woodcutter",
+			// 	Arrays.asList(
+			// 		gameBoard.getTile(125, 171)
+			// 	)
+			// );
+
+			// gameBoard.spawn(
+			// 	117, 170,
+			// 	"woodcutter",
+			// 	Arrays.asList(
+			// 		gameBoard.getTile(117, 170)
+			// 	)
+			// );
+
+			scanner.close();
+		} catch(FileNotFoundException e) {
+			System.out.println("Map data not found.");
+			e.printStackTrace();
+		}
+
+		return gameBoard;
+	}
+}
