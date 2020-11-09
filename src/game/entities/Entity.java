@@ -158,11 +158,11 @@ public class Entity extends Sprite {
 	}
 
 	public void setDamageNoise(String name) {
-		this.damageNoise = new SoundClip("../../res/sounds/" + name + ".wav");
+		this.damageNoise = new SoundClip("/res/sounds/" + name + ".wav");
 	}
 
 	public void setDeathNoise(String name) {
-		this.deathNoise = new SoundClip("../../res/sounds/" + name + ".wav");
+		this.deathNoise = new SoundClip("/res/sounds/" + name + ".wav");
 	}
 
 	public void setFaction(String factionName) {

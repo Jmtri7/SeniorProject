@@ -12,7 +12,7 @@ import engine.gfx.ImageTile;
 import game.board.Tile;
 
 public class Grass extends Entity {
-	private static ImageTile image = new ImageTile("../../res/tile/animatedGrass.png", 20, 40);
+	private static ImageTile image = new ImageTile("/res/tile/animatedGrass.png", 20, 40);
 
 	private Animation sway = new Animation("sway", 0.5f, Arrays.asList(0, 1));
 

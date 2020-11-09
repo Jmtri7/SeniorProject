@@ -541,7 +541,7 @@ public class Board {
 
 	public void setDefaultMusic(String name) {
 		if (name.equals("null")) defaultMusic = null;
-		else defaultMusic = new SoundClip("../../res/music/" + name + ".wav");
+		else defaultMusic = new SoundClip("/res/music/" + name + ".wav");
 		music = defaultMusic;
 	}
 

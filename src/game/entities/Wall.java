@@ -71,12 +71,9 @@ public class Wall extends Entity {
 		this.type = type;
 	}
 
-	public static void createWallType(String path, int tileX, int tileY) {
-		ImageTile wallImage;
-
-		wallImage = new ImageTile("../../res/structure/" + path + ".png", tileX, tileY);			
+	public static void createWallType(String name, ImageTile image) {
+		ImageTile wallImage = image;		
 		wallImage.setLightBlock(Light.FULL);
-		imageMap.put(path, wallImage);
-
+		imageMap.put(name, wallImage);
 	}
 }

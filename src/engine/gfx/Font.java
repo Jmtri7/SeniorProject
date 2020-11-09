@@ -1,7 +1,7 @@
 package engine.gfx;
 
 public class Font {
-	public static final Font STANDARD = new Font("../../res/fonts/standard.png");
+	public static final Font STANDARD = new Font("/res/fonts/standard.png");
 
 	private Image fontImage;
 	private int[] offsets;

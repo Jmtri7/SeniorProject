@@ -31,7 +31,7 @@ import game.entities.Portal;
 public class BoardBuilder {
 	static void SavePlayer(Creature pc) {
 		try {
-			FileWriter saveWriter = new FileWriter("classes/res/save/player.txt");
+			FileWriter saveWriter = new FileWriter("res/save/player.txt");
 
 			// get data
 
@@ -71,7 +71,7 @@ public class BoardBuilder {
 		Creature pc;
 
 		try {
-			File assetData = new File("classes/res/save/player.txt");
+			File assetData = new File("res/save/player.txt");
 			Scanner scanner = new Scanner(assetData);
 			String line = "";
 
@@ -126,7 +126,7 @@ public class BoardBuilder {
 
 	static void LoadAssets() {
 		try {
-			File assetData = new File("classes/res/world/assetData.txt");
+			File assetData = new File("res/world/assetData.txt");
 			Scanner scanner = new Scanner(assetData);
 			String line = "";
 
@@ -149,7 +149,10 @@ public class BoardBuilder {
 					line = scanner.nextLine();
 					tileY = Integer.parseInt(line);
 
-					Wall.createWallType(name, tileX, tileY);
+					Wall.createWallType(
+						name,
+						new ImageTile("/res/structure/" + name + ".png", tileX, tileY)
+					);
 
 					scanner.nextLine();
 					line = scanner.nextLine();
@@ -171,9 +174,9 @@ public class BoardBuilder {
 					boolean blocked = Boolean.parseBoolean(line);
 
 					if(lightColor.equals("null"))
-						new Terrain(name, new Image("../../res/tile/" + name + ".png"), null, blocked);
+						new Terrain(name, new Image("/res/tile/" + name + ".png"), null, blocked);
 					else
-						new Terrain(name, new Image("../../res/tile/" + name + ".png"), 0xff000000 | Integer.parseInt(lightColor, 16), blocked);
+						new Terrain(name, new Image("/res/tile/" + name + ".png"), 0xff000000 | Integer.parseInt(lightColor, 16), blocked);
 
 					scanner.nextLine();
 					line = scanner.nextLine();
@@ -184,13 +187,13 @@ public class BoardBuilder {
 			// INTEGRATE WITH BUILDER
 
 			new Projectile(
-				new ImageTile("../../res/projectile/arrow.png", 20, 40),
+				new ImageTile("/res/projectile/arrow.png", 20, 40),
 				"arrow",
 				1
 			);
 
 			new Projectile(
-				new ImageTile("../../res/projectile/firebolt.png", 20, 40),
+				new ImageTile("/res/projectile/firebolt.png", 20, 40),
 				"firebolt",
 				10
 			);
@@ -220,24 +223,24 @@ public class BoardBuilder {
 					line = scanner.nextLine();
 					SoundClip injurySound;
 					if(line.equals("null")) injurySound = null;
-					else injurySound = new SoundClip("../../res/sounds/" + line + ".wav");
+					else injurySound = new SoundClip("/res/sounds/" + line + ".wav");
 
 					line = scanner.nextLine();
 					SoundClip deathSound;
 					if(line.equals("null")) deathSound = null;
-					else deathSound = new SoundClip("../../res/sounds/" + line + ".wav");
+					else deathSound = new SoundClip("/res/sounds/" + line + ".wav");
 
 					line = scanner.nextLine();
 					SoundClip attackSound;
 					if(line.equals("null")) attackSound = null;
-					else attackSound = new SoundClip("../../res/sounds/" + line + ".wav");
+					else attackSound = new SoundClip("/res/sounds/" + line + ".wav");
 
 					line = scanner.nextLine();
 
 					new Species(
 						name,
 						hp, dmg,
-						new ImageTile("../../res/creature/" + name + ".png", tileX, tileY),
+						new ImageTile("/res/creature/" + name + ".png", tileX, tileY),
 						new Light(80, lightColor),
 						injurySound,
 						deathSound,
@@ -294,7 +297,7 @@ public class BoardBuilder {
 					String damageType = line;
 
 					Equipment.create(
-						new ImageTile("../../res/items/" + name + ".png", 60, 60),
+						new ImageTile("/res/items/" + name + ".png", 60, 60),
 						name,
 						equipmentType,
 						dmgModifier,
@@ -322,7 +325,7 @@ public class BoardBuilder {
 		Board gameBoard = null;
 
 		try {
-			File mapData = new File("classes/res/world/" + mapName + "/mapData.txt");
+			File mapData = new File("res/world/" + mapName + "/mapData.txt");
 			Scanner scanner = new Scanner(mapData);
 			String line = "";
 
@@ -338,8 +341,8 @@ public class BoardBuilder {
 
 				// board layout
 				gameBoard = new Board(
-					new Image("../../res/world/" + mapName + "/tileMap.png"),
-					new Image("../../res/world/" + mapName + "/structureMap.png"),
+					new Image("/res/world/" + mapName + "/tileMap.png"),
+					new Image("/res/world/" + mapName + "/structureMap.png"),
 					tileSize
 					);
 
@@ -372,7 +375,7 @@ public class BoardBuilder {
 					line = scanner.nextLine();
 					SoundClip music;
 					if(line.equals("null")) music = null;
-					else music = new SoundClip("../../res/music/" + line + ".wav");
+					else music = new SoundClip("/res/music/" + line + ".wav");
 
 					gameBoard.addZone(
 						x, y,

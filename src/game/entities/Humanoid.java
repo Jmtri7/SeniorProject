@@ -34,13 +34,13 @@ public class Humanoid extends Creature {
 	public Humanoid(Tile tile, String type) {
 		super(tile, type);
 
-		head = new ImageTile("../../res/creature/" + type + "/head.png", 60, 60);
-		torso = new ImageTile("../../res/creature/" + type + "/torso.png", 60, 60);
-		rightArm = new ImageTile("../../res/creature/" + type + "/rightArm.png", 60, 60);
-		leftArm = new ImageTile("../../res/creature/" + type + "/leftArm.png", 60, 60);
-		legs = new ImageTile("../../res/creature/" + type + "/legs.png", 60, 60);
+		head = new ImageTile("/res/creature/" + type + "/head.png", 60, 60);
+		torso = new ImageTile("/res/creature/" + type + "/torso.png", 60, 60);
+		rightArm = new ImageTile("/res/creature/" + type + "/rightArm.png", 60, 60);
+		leftArm = new ImageTile("/res/creature/" + type + "/leftArm.png", 60, 60);
+		legs = new ImageTile("/res/creature/" + type + "/legs.png", 60, 60);
 
-		underwear = new ImageTile("../../res/creature/" + type + "/underwear.png", 60, 60);
+		underwear = new ImageTile("/res/creature/" + type + "/underwear.png", 60, 60);
 	}
 
 	public void equip(Equipment item) {

@@ -12,7 +12,7 @@ import engine.gfx.ImageTile;
 import game.board.Tile;
 
 public class Plant extends Entity {
-	private static ImageTile image = new ImageTile("../../res/plants/flowers.png", 20, 40);
+	private static ImageTile image = new ImageTile("/res/plants/flowers.png", 20, 40);
 
 	private int type;
 
