@@ -2,7 +2,7 @@ BOARD
 
 20
 888888
-intense
+null
 
 ZONES
 
@@ -10,15 +10,19 @@ ROUTES
 
 CRITTERS
 
-scorpion
-10
-sand
+rabbit
+5
+grass
+
+spider
+5
+dirt
 
 PLAYER
 
 human
+4
 8
-11
 
 ITEMS
 
@@ -27,9 +31,9 @@ CREATURES
 PORTALS
 
 city
-42
-64
-14
-23
+1
+1
+2
+2
 
 END

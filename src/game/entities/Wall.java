@@ -22,6 +22,8 @@ public class Wall extends Entity {
 
 		this.type = type;
 		this.blocking = true;
+
+		this.tag = "obstacle";
 	}
 
 

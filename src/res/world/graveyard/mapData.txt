@@ -28,6 +28,8 @@ human
 10
 19
 
+ITEMS
+
 CREATURES
 
 PORTALS

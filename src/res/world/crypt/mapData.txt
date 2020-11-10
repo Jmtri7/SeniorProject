@@ -18,7 +18,11 @@ ROUTES
 CRITTERS
 
 skeleton
-10
+5
+stone
+
+spider
+5
 stone
 
 PLAYER
@@ -26,6 +30,16 @@ PLAYER
 human
 4
 8
+
+ITEMS
+
+fireScroll
+1
+1
+
+fireScroll
+2
+1
 
 CREATURES
 

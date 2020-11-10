@@ -23,9 +23,11 @@ human
 4
 8
 
+ITEMS
+
 CREATURES
 
-man
+death clan warrior
 2
 2
 sentry

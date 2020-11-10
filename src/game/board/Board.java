@@ -80,6 +80,7 @@ public class Board {
 				}
 				
 				int mapData = structureMap.getP()[i * structureMap.getW() + j];
+				if(mapData == 0xff0000ff) this.addWall(j, i, "sweetRide");
 				if(mapData == 0xff888888) this.addWall(j, i, "stoneWall");
 				if(mapData == 0xff907060) this.addWall(j, i, "fence");
 				if(mapData == 0xff806050) this.addWall(j, i, "smallTable");
@@ -149,7 +150,7 @@ public class Board {
 	}
 
 	// creates the creature
-	private Creature spawn(Tile tile, String type) {
+	public Creature spawn(Tile tile, String type) {
 		Creature spawn = null;
 
 		if(type.equals("player")) {
@@ -171,25 +172,29 @@ public class Board {
 			spawn.setInvincible(true);
 			// this.equipItem(spawn, "fools hat");
 			this.equipItem(spawn, "peasantGownBrown");
+			this.equipItem(spawn, "leatherShoes");
 		}
 		else if(type.equals("man")) {
 			spawn  = new Humanoid(tile, "human");
 			this.equipItem(spawn, "peasantGownBrown");
+			this.equipItem(spawn, "leatherShoes");
 
 			spawn.setTag("man");
 		}
 		else if(type.equals("peasant")) {
 			spawn  = new Humanoid(tile, "human");
-			this.equipItem(spawn, "peasantHat");
+			this.equipItem(spawn, "leatherHat");
 			this.equipItem(spawn, "peasantGownBrown");
+			this.equipItem(spawn, "leatherShoes");
 
 			spawn.setTag("peasant");
 		}
 		else if(type.equals("woodcutter")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("woodcutters");
-			this.equipItem(spawn, "peasantHat");
+			this.equipItem(spawn, "leatherHat");
 			this.equipItem(spawn, "peasantGownBrown");
+			this.equipItem(spawn, "leatherShoes");
 			this.equipItem(spawn, "axe");
 
 			spawn.setTag("woodcutter");
@@ -197,8 +202,9 @@ public class Board {
 		else if(type.equals("miner")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("miners");
-			this.equipItem(spawn, "peasantHat");
+			this.equipItem(spawn, "leatherHat");
 			this.equipItem(spawn, "peasantGownBrown");
+			this.equipItem(spawn, "leatherShoes");
 			this.equipItem(spawn, "pickaxe");
 
 			spawn.setTag("miner");
@@ -206,8 +212,9 @@ public class Board {
 		else if(type.equals("hunter")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("hunters");
-			this.equipItem(spawn, "peasantHat");
+			this.equipItem(spawn, "leatherHat");
 			this.equipItem(spawn, "peasantGownBrown");
+			this.equipItem(spawn, "leatherShoes");
 			this.equipItem(spawn, "bow");
 
 			spawn.setTag("woodcutter");
@@ -224,6 +231,8 @@ public class Board {
 		else if(type.equals("skeleton")) {
 			spawn  = new Humanoid(tile, "skeleton");
 			spawn.setFaction("death clan");
+			this.equipItem(spawn, "leatherHat");
+			this.equipItem(spawn, "leatherShoes");
 			this.equipItem(spawn, "axe");
 
 			spawn.setTag("skeleton");
@@ -232,6 +241,7 @@ public class Board {
 			spawn  = new Humanoid(tile, "human");
 			this.equipItem(spawn, "maidHair");
 			this.equipItem(spawn, "maidGown");
+			this.equipItem(spawn, "leatherShoes");
 
 			spawn.setTag("maid");
 		}
@@ -245,6 +255,9 @@ public class Board {
 		}
 		else if(type.equals("demon")) {
 			spawn  = new Creature(tile, "demon");
+			spawn.setFaction("demons");
+		} else if(type.equals("spider")) {
+			spawn  = new Creature(tile, "spider");
 			spawn.setFaction("demons");
 		}
 

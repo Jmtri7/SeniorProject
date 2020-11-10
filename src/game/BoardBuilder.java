@@ -190,13 +190,13 @@ public class BoardBuilder {
 			new Projectile(
 				new ImageTile("/res/projectile/arrow.png", 20, 40),
 				"arrow",
-				1
+				19
 			);
 
 			new Projectile(
 				new ImageTile("/res/projectile/firebolt.png", 20, 40),
 				"firebolt",
-				10
+				100
 			);
 
 			if(line.equals("SPECIES")) {
@@ -259,7 +259,7 @@ public class BoardBuilder {
 
 				// get first faction name
 				line = scanner.nextLine();
-				while(!line.equals("EQUIPMENT")) {
+				while(!line.equals("ITEMS")) {
 					String faction = line;
 
 					ArrayList<String> enemies = new ArrayList<String>();
@@ -275,6 +275,39 @@ public class BoardBuilder {
 
 					scanner.nextLine();
 					line = scanner.nextLine();
+				}
+			}
+
+			if(line.equals("ITEMS")) {
+				scanner.nextLine();
+
+				line = scanner.nextLine();
+				while(!line.equals("EQUIPMENT")) {
+					// String name = line;
+
+					// line = scanner.nextLine();
+					// String equipmentType = line;
+
+					// line = scanner.nextLine();
+					// int dmgModifier = Integer.parseInt(line);
+
+					// line = scanner.nextLine();
+					// float armorModifier = Float.parseFloat(line);
+
+					// line = scanner.nextLine();
+					// String damageType = line;
+
+					// Equipment.create(
+					// 	new ImageTile("/res/items/" + name + ".png", 60, 60),
+					// 	name,
+					// 	equipmentType,
+					// 	dmgModifier,
+					// 	armorModifier,
+					// 	damageType
+					// );
+
+					// scanner.nextLine();
+					// line = scanner.nextLine();
 				}
 			}
 
@@ -488,6 +521,34 @@ public class BoardBuilder {
 				line = scanner.nextLine();
 			}
 
+			if(line.equals("ITEMS")) {
+				scanner.nextLine();
+
+				line = scanner.nextLine();
+				while(!line.equals("CREATURES")) {
+					String name = line; 
+					
+					line = scanner.nextLine();
+					int x = Integer.parseInt(line);
+
+					line = scanner.nextLine();
+					int y = Integer.parseInt(line);
+
+					if(name.equals("fireScroll")) {
+						gameBoard.placeItem(
+							x,
+							y,
+							new ImageTile("../../res/items/fireScroll.png", 20, 20),
+							"consumable",
+							"scrollFireNova"
+						);
+					}
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
 			if(line.equals("CREATURES")) {
 				scanner.nextLine();
 
@@ -523,6 +584,11 @@ public class BoardBuilder {
 							Arrays.asList(
 								gameBoard.getTile(x, y)
 							)
+						);
+					} else if(ai.equals("none")) {
+						gameBoard.spawn(
+							gameBoard.getTile(x, y),
+							type
 						);
 					}
 
@@ -560,36 +626,11 @@ public class BoardBuilder {
 			}
 
 			// HARD-CODED DATA
-			// INTEGRATE WITH BUILDER
-
-			// gameBoard.placeItem(
-			// 	1,
-			// 	1,
-			// 	new ImageTile("../../res/items/blueJewel.png", 20, 20),
-			// 	"consumable",
-			// 	"scrollFireNova"
-			// );
 
 			// gameBoard.spawn(
 			// 	35, 90,
 			// 	"death clan warrior", 
 			// 	chief
-			// );
-
-			// gameBoard.spawn(
-			// 	125, 171,
-			// 	"woodcutter",
-			// 	Arrays.asList(
-			// 		gameBoard.getTile(125, 171)
-			// 	)
-			// );
-
-			// gameBoard.spawn(
-			// 	117, 170,
-			// 	"woodcutter",
-			// 	Arrays.asList(
-			// 		gameBoard.getTile(117, 170)
-			// 	)
 			// );
 
 			scanner.close();

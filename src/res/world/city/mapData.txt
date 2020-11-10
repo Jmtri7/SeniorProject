@@ -47,6 +47,8 @@ human
 8
 11
 
+ITEMS
+
 CREATURES
 
 knight
@@ -92,5 +94,11 @@ desert
 24
 42
 63
+
+riverland
+1
+1
+2
+2
 
 END

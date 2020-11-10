@@ -1,5 +1,9 @@
 STRUCTURES
 
+sweetRide
+60
+30
+
 tree
 80
 80
@@ -67,8 +71,8 @@ SPECIES
 skeleton
 60
 40
-20
-1
+100
+10
 ffffff
 mining
 mining
@@ -78,7 +82,7 @@ null
 human
 60
 40
-20
+100
 1
 ffffff
 humanInjury
@@ -89,8 +93,8 @@ null
 orc
 60
 40
-20
-1
+100
+10
 ff9999
 orcInjury
 orcDeath
@@ -100,8 +104,8 @@ null
 demon
 60
 40
-20
-2
+100
+10
 ff8888
 monsterInjury
 monsterDeath
@@ -111,7 +115,7 @@ null
 rabbit
 20
 40
-1
+100
 1
 aaaa88
 rabbitInjury
@@ -122,9 +126,20 @@ null
 scorpion
 40
 40
-20
-1
+100
+10
 aaaa88
+rabbitInjury
+rabbitDeath
+null
+null
+
+spider
+40
+40
+100
+10
+88aaaa
 rabbitInjury
 rabbitDeath
 null
@@ -174,6 +189,8 @@ end
 plants
 end
 
+ITEMS
+
 EQUIPMENT
 
 bow
@@ -184,13 +201,13 @@ blunt
 
 pickaxe
 weapon
-2
+9
 0
 picking
 
 axe
 weapon
-2
+9
 0
 chopping
 
@@ -218,8 +235,14 @@ hat
 0
 none
 
-peasantHat
+leatherHat
 hat
+0
+0
+none
+
+leatherShoes
+shoes
 0
 0
 none

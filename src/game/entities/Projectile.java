@@ -24,7 +24,7 @@ public class Projectile extends Entity {
 	protected Light light;
 
 	protected Animation idle = new Animation("idle", 0, Arrays.asList(0));
-	protected Animation walking = new Animation("walk", 0.2f, Arrays.asList(0));
+	protected Animation walking = new Animation("walk", 0.1f, Arrays.asList(0));
 	protected Animation attacking = new Animation("attack", 0f, Arrays.asList(0));
 
 	protected Animation animation = idle;

@@ -17,6 +17,7 @@ public class PlayerController {
 	}
 
 	public void update(GameContainer gc, float dt) {
+
 		if(gc.getInput().isKey(KeyEvent.VK_SHIFT) || gc.getInput().isKey(KeyEvent.VK_SPACE)) {
 			if(gc.getInput().isKey(KeyEvent.VK_W)) {
 				player.turn(0);
