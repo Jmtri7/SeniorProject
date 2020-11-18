@@ -45,7 +45,7 @@ PLAYER
 
 human
 8
-11
+12
 
 ITEMS
 
@@ -95,10 +95,10 @@ desert
 42
 63
 
-riverland
-1
-1
-2
-2
+forest
+0
+13
+48
+35
 
 END

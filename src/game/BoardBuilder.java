@@ -33,14 +33,25 @@ public class BoardBuilder {
 	static void SavePlayer(Creature pc) {
 		try {
 			FileWriter saveWriter = new FileWriter("res/save/player.txt");
+			String saveData = "";
 
-			// get data
+			// board data
+
+			int time = pc.getTile().getBoard().getTime();
+			boolean timeUp = pc.getTile().getBoard().getTimeUp();
+
+			saveData +=
+				time + "\n"
+				+ timeUp + "\n"
+				+ "\n";
+
+			// player data
 
 			String species = pc.getSpecies().getType();
 			String faction = pc.getFaction().getName();
 			float speed =  pc.getWalkSpeed();
 
-			String saveData =
+			saveData +=
 				species + "\n"
 				+ faction + "\n"
 				+ speed + "\n"
@@ -65,7 +76,6 @@ public class BoardBuilder {
 			System.out.println("Failed to write save.");
 			e.printStackTrace();
 		}
-
 	}
 
 	static Creature LoadPlayer(Board gameBoard, int spawnX, int spawnY) {
@@ -75,6 +85,14 @@ public class BoardBuilder {
 			File assetData = new File("res/save/player.txt");
 			Scanner scanner = new Scanner(assetData);
 			String line = "";
+			
+			int time = Integer.parseInt(scanner.nextLine());
+			gameBoard.setTime(time);
+
+			boolean timeUp = Boolean.parseBoolean(scanner.nextLine());
+			gameBoard.setTimeUp(timeUp);
+
+			scanner.nextLine();
 
 			// get data
 
@@ -242,7 +260,7 @@ public class BoardBuilder {
 						name,
 						hp, dmg,
 						new ImageTile("/res/creature/" + name + ".png", tileX, tileY),
-						new Light(80, lightColor),
+						new Light(tileY * 2, lightColor),
 						injurySound,
 						deathSound,
 						attackSound,
@@ -484,8 +502,9 @@ public class BoardBuilder {
 						int randomX = (int) (gameBoard.getWidth() * Math.random());
 						int randomY = (int) (gameBoard.getWidth() * Math.random());
 						if(
-							gameBoard.getTile(randomX, randomY).getTerrain().getType().equals(terrain)
-							&& !gameBoard.getTile(randomX, randomY).isBlocked()
+							(gameBoard.getTile(randomX, randomY).getTerrain().getType().equals(terrain)
+							&& !gameBoard.getTile(randomX, randomY).isBlocked()) ||
+								terrain.equals("any")
 						) {
 							gameBoard.spawn(randomX, randomY, species, "wander");
 							pop++;

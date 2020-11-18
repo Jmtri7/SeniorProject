@@ -1,8 +1,8 @@
 STRUCTURES
 
-sweetRide
-60
-30
+greatTree
+400
+320
 
 tree
 80
@@ -112,10 +112,21 @@ monsterDeath
 null
 null
 
+wisp
+10
+10
+1
+1
+88ffff
+null
+null
+null
+null
+
 rabbit
 20
 40
-100
+50
 1
 aaaa88
 rabbitInjury

@@ -129,9 +129,13 @@ public class AIController {
 						for(int i = 0; i < 4; i++) {
 							Tile neighbor = character.getTile().getNeighbor(i);
 
+							if(neighbor == null) break;
+
 							// check line
 							for(int j = 0; j < aggroRange; j++) {
 								neighbor = neighbor.getNeighbor(i);
+
+								if(neighbor == null) break;
 								
 								if(
 									neighbor != null

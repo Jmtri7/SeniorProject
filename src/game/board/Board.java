@@ -80,7 +80,8 @@ public class Board {
 				}
 				
 				int mapData = structureMap.getP()[i * structureMap.getW() + j];
-				if(mapData == 0xff0000ff) this.addWall(j, i, "sweetRide");
+				if(mapData == 0xff000000) this.addWall(j, i, "none");
+				if(mapData == 0xff0000ff) this.addDecor(j, i, "greatTree");
 				if(mapData == 0xff888888) this.addWall(j, i, "stoneWall");
 				if(mapData == 0xff907060) this.addWall(j, i, "fence");
 				if(mapData == 0xff806050) this.addWall(j, i, "smallTable");
@@ -249,6 +250,14 @@ public class Board {
 			spawn  = new Creature(tile, "rabbit");
 			spawn.setFaction("rabbits");
 		}
+		else if(type.equals("wisp")) {
+			spawn  = new Creature(tile, "wisp");
+			spawn.setFloating(true);
+			spawn.setBlocking(false);
+			spawn.setInvincible(true);
+
+			spawn.setTag("wisp");
+		}
 		else if(type.equals("scorpion")) {
 			spawn  = new Creature(tile, "scorpion");
 			spawn.setFaction("demons");
@@ -281,6 +290,14 @@ public class Board {
 
 	public void addZone(int x, int y, int width, int height, int ambientColor, SoundClip music) {
 		zones.add(new Zone(x, y, width, height, ambientColor, music));
+	}
+
+	public void addDecor(int x, int y, String type) {
+		Tile tile = this.getTile(x, y);
+		Wall wall = new Wall(tile, type);
+		wall.setInvincible(true);
+		wall.setBlocking(false);
+		wall.setShifting(true);
 	}
 
 	public void addGrass(int x, int y) {
@@ -368,7 +385,7 @@ public class Board {
 			defaultColor = time;
 		}
 
-		// set outdoor lighting		
+		// set outdoor lighting	
 		if(currentZone == null) ambientColor = defaultColor;
 		// =======================================
 		
@@ -569,6 +586,27 @@ public class Board {
 		if (name.equals("null")) defaultMusic = null;
 		else defaultMusic = new SoundClip("/res/music/" + name + ".wav");
 		music = defaultMusic;
+	}
+
+	public int getAmbientColor() {
+		return ambientColor;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public boolean getTimeUp() {
+		return timeUp;
+	}
+
+	public void setTime(int value) {
+		time = value;
+		defaultColor = time;
+	}
+
+	public void setTimeUp(boolean value) {
+		timeUp = value;
 	}
 
 	public String switchTo() {

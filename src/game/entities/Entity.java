@@ -137,6 +137,10 @@ public class Entity extends Sprite {
 		return isFloating;
 	}
 
+	public void setFloating(boolean value) {
+		isFloating = value;
+	}
+
 	public void setTile(Tile tile) {
 		this.tile = tile;
 	}

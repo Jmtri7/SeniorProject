@@ -20,7 +20,7 @@ public class GameManager extends AbstractGame {
 
 	public GameManager() {
 		BoardBuilder.LoadAssets();
-		gameBoard = BoardBuilder.BuildBoard("city");
+		gameBoard = BoardBuilder.BuildBoard("forest");
 	}
 
 	@Override
