@@ -2,7 +2,7 @@ BOARD
 
 20
 888888
-cheerful
+city
 
 ZONES
 

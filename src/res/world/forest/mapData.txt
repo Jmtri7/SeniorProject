@@ -2,7 +2,7 @@ BOARD
 
 20
 888888
-null
+forest
 
 ZONES
 
@@ -16,6 +16,10 @@ any
 
 rabbit
 20
+grass
+
+spider
+3
 grass
 
 hunter

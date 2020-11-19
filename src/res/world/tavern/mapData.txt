@@ -11,9 +11,20 @@ ZONES
 10
 10
 ffffff
-null
+tavern
 
 ROUTES
+
+server
+3
+2
+8
+3
+8
+8
+2
+8
+end
 
 CRITTERS
 
@@ -27,7 +38,7 @@ ITEMS
 
 CREATURES
 
-death clan warrior
+man
 2
 2
 sentry
@@ -35,7 +46,8 @@ sentry
 maid
 8
 3
-wander
+patrol
+server
 
 peasant
 3

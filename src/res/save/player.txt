@@ -1,5 +1,5 @@
--11184811
-false
+-13421773
+true
 
 human
 knights
@@ -17,7 +17,7 @@ peasantGownBrown
 equipment
 true
 
-knightHelm
+leatherHat
 equipment
 true
 
