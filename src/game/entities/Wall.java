@@ -40,11 +40,11 @@ public class Wall extends Entity {
 			float spriteY = y - imageMap.get(type).getTileH() + tileSize;
 
 			if(!isDead) {
-					if(shifting == true && tile.getBoard().getAmbientColor() <= 0xff888888) {
+					if(shifting == true && tile.getBoard().getAmbientColor() <= 0xff444444) {
 						r.drawImageTile(imageMap.get(type), (int) spriteX, (int) spriteY, 0, 0);
 						blocking = false;
 					}
-					else if(shifting == true && tile.getBoard().getAmbientColor() > 0xff888888) {
+					else if(shifting == true && tile.getBoard().getAmbientColor() > 0xff444444) {
 						r.drawImageTile(imageMap.get(type), (int) spriteX, (int) spriteY, 1, 0);
 						blocking = true;
 					}

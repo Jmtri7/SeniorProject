@@ -370,17 +370,18 @@ public class Board {
 
 		// CLOCK
 		// ======================================
-		timer += dt / 10;
+		timer += dt / 10 * 50;
 		// System.out.println(timer + " / " + 1);
 		if(timer > 1) {
+
+			// day / night
+			if(time >= 0xffffffff || time <= 0xff444444) {
+				timeUp = !timeUp;
+			}
+
 			timer -= 1;
 			if(timeUp) time += 0x00111111;
 			else time -= 0x00111111;
-
-			// day / night
-			if(time >= 0xffffffff || time <= 0xff333333) {
-				timeUp = !timeUp;
-			}
 
 			defaultColor = time;
 		}
