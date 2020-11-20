@@ -1,4 +1,4 @@
--2236963
+-8947849
 false
 
 human
@@ -11,14 +11,18 @@ true
 
 bow
 equipment
-false
+true
 
 peasantGownBrown
 equipment
 true
 
-axe
+orcHat
 equipment
 true
+
+axe
+equipment
+false
 
 END

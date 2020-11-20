@@ -431,20 +431,24 @@ public class Board {
 
 		// UPDATE ENTITIES
 
-		int updateRadius = 14;
-		Tile playerTile;
-		playerTile = pc.getPlayer().getTile();
-		for(int i = -updateRadius; i < updateRadius; i++) {
-			for(int j = -updateRadius; j < updateRadius; j++) {
-				int tileLocation = this.width * (playerTile.getY() + j) + (playerTile.getX() + i);
-				if(
-					tileLocation >= 0 
-					&& tileLocation < tiles.length
-				) tiles[tileLocation].update(gc, dt);
-			}
-		}
+		// update with radius
 
-		//for(int i = 0; i < tiles.length; i++) tiles[i].update(gc, dt);
+		// int updateRadius = 14;
+		// Tile playerTile;
+		// playerTile = pc.getPlayer().getTile();
+		// for(int i = -updateRadius; i < updateRadius; i++) {
+		// 	for(int j = -updateRadius; j < updateRadius; j++) {
+		// 		int tileLocation = this.width * (playerTile.getY() + j) + (playerTile.getX() + i);
+		// 		if(
+		// 			tileLocation >= 0 
+		// 			&& tileLocation < tiles.length
+		// 		) tiles[tileLocation].update(gc, dt);
+		// 	}
+		// }
+
+		// update without radius
+		for(int i = 0; i < tiles.length; i++) tiles[i].update(gc, dt);
+
 		if(pc.getPlayer() != null) pc.update(gc, dt);
 		for(int i = 0; i < creatures.size(); i++) creatures.get(i).update(gc, dt);
 	}

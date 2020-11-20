@@ -38,10 +38,10 @@ CREATURES
 
 PORTALS
 
-city
+road
 49
 35
 1
-13
+25
 
 END

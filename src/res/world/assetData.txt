@@ -160,12 +160,14 @@ FACTIONS
 
 hunters
 rabbits
+death clan
 end
 
 death clan
 woodcutters
 miners
 knights
+hunters
 end
 
 woodcutters
