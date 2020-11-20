@@ -1,13 +1,9 @@
--8947849
+-7829368
 false
 
 human
 knights
 0.3
-
-leatherShoes
-equipment
-true
 
 bow
 equipment
@@ -17,12 +13,12 @@ peasantGownBrown
 equipment
 true
 
-orcHat
+leatherShoes
 equipment
 true
 
-axe
+leatherHat
 equipment
-false
+true
 
 END

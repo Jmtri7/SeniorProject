@@ -370,7 +370,7 @@ public class Board {
 
 		// CLOCK
 		// ======================================
-		timer += dt / 10 * 50;
+		timer += dt / 10 * 5;
 		// System.out.println(timer + " / " + 1);
 		if(timer > 1) {
 
