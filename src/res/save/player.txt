@@ -1,4 +1,4 @@
--1
+-1118482
 true
 
 human
@@ -7,21 +7,25 @@ knights
 
 bow
 equipment
-true
+false
 
 leatherShoes
 equipment
 true
 
-leatherHat
+axe
 equipment
 true
 
-whiteShirt
+ironPlatelegs
 equipment
 true
 
-bluePants
+maidHair
+equipment
+true
+
+maidGown
 equipment
 true
 

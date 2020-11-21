@@ -15,8 +15,6 @@ wisp
 any
 fauna
 
-
-
 PLAYER
 
 human

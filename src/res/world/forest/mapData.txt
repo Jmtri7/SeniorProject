@@ -20,6 +20,11 @@ spider
 grass
 fauna
 
+rabbit
+5
+grass
+fauna
+
 flower
 100
 grass
