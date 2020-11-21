@@ -276,13 +276,37 @@ shirt
 0
 none
 
+sailorShirt
+shirt
+0
+0
+none
+
+pirateShirt
+shirt
+0
+0
+none
+
 bluePants
-shoes
+pants
+0
+0
+none
+
+redPants
+pants
 0
 0
 none
 
 turban
+hat
+0
+0
+none
+
+leatherHat
 hat
 0
 0
@@ -294,7 +318,7 @@ hat
 0
 none
 
-leatherHat
+pirateHat
 hat
 0
 0
@@ -318,8 +342,8 @@ shirt
 0
 none
 
-knightBoots
-shoes
+ironPlatelegs
+pants
 0
 0
 none

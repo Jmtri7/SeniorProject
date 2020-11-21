@@ -1,4 +1,4 @@
--6710887
+-1
 true
 
 human
@@ -6,10 +6,6 @@ knights
 0.3
 
 bow
-equipment
-true
-
-peasantGownBrown
 equipment
 true
 
@@ -21,16 +17,12 @@ leatherHat
 equipment
 true
 
-sailorHat
-equipment
-false
-
 whiteShirt
 equipment
-false
+true
 
 bluePants
 equipment
-false
+true
 
 END

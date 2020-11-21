@@ -13,6 +13,9 @@ CRITTERS
 wisp
 50
 any
+fauna
+
+
 
 PLAYER
 

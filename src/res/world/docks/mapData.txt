@@ -54,6 +54,16 @@ ITEMS
 
 CREATURES
 
+sailor
+8
+14
+sentry
+
+sailor
+10
+26
+sentry
+
 knight
 1
 9

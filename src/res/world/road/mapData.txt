@@ -48,14 +48,22 @@ CRITTERS
 wisp
 5
 any
+fauna
 
 rabbit
 20
 grass
+fauna
 
 hunter
 2
 grass
+fauna
+
+flower
+100
+grass
+flora
 
 PLAYER
 
@@ -91,7 +99,7 @@ docks
 49
 25
 1
-13
+8
 
 forest
 0

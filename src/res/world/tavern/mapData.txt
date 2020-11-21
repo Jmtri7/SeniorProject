@@ -54,9 +54,14 @@ peasant
 5
 sentry
 
-peasant
+man
 5
 5
+sentry
+
+sailor
+4
+8
 sentry
 
 PORTALS

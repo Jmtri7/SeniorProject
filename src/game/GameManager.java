@@ -47,7 +47,7 @@ public class GameManager extends AbstractGame {
 					spawnY = gameBoard.getSpawnY();
 					gameBoard = BoardBuilder.BuildBoard(gameBoard.switchTo(), spawnX, spawnY);
 				} else {
-					gameBoard = BoardBuilder.BuildBoard("forest");
+					gameBoard = BoardBuilder.BuildBoard("docks");
 				}
 				
 				gameBoard.setSwitch(null);

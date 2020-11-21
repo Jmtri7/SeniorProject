@@ -13,10 +13,12 @@ CRITTERS
 wisp
 50
 any
+fauna
 
 crab
 5
 fungi
+fauna
 
 PLAYER
 

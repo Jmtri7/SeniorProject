@@ -13,6 +13,12 @@ CRITTERS
 wisp
 20
 any
+fauna
+
+flower
+100
+grass
+flora
 
 PLAYER
 

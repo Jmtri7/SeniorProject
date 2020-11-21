@@ -179,7 +179,8 @@ public class Board {
 			spawn.setFaction("knights");
 			this.equipItem(spawn, "knightHelm");
 			this.equipItem(spawn, "breastPlate");
-			this.equipItem(spawn, "knightBoots");
+			this.equipItem(spawn, "ironPlatelegs");
+			this.equipItem(spawn, "leatherShoes");
 		}
 		else if(type.equals("fool")) {
 			spawn  = new Humanoid(tile, "human");
@@ -192,7 +193,8 @@ public class Board {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("hunters");
 			this.equipItem(spawn, "whiteShirt");
-			this.equipItem(spawn, "bluePants");
+			this.equipItem(spawn, "redPants");
+			this.equipItem(spawn, "leatherShoes");
 
 			spawn.setTag("man");
 		}
@@ -239,16 +241,26 @@ public class Board {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("hunters");
 			this.equipItem(spawn, "sailorHat");
-			this.equipItem(spawn, "whiteShirt");
+			this.equipItem(spawn, "sailorShirt");
 			this.equipItem(spawn, "bluePants");
 
 			spawn.setTag("sailor");
+		}
+		else if(type.equals("pirate")) {
+			spawn  = new Humanoid(tile, "human");
+			spawn.setFaction("wild");
+			this.equipItem(spawn, "pirateShirt");
+			this.equipItem(spawn, "redPants");
+			this.equipItem(spawn, "leatherShoes");
+			this.equipItem(spawn, "axe");
+
+			spawn.setTag("pirate");
 		}
 		else if(type.equals("nomad")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("hunters");
 			this.equipItem(spawn, "turban");
-			this.equipItem(spawn, "whiteShirt");
+			this.equipItem(spawn, "redPants");
 			this.equipItem(spawn, "leatherShoes");
 
 			spawn.setTag("nomad");
@@ -259,6 +271,7 @@ public class Board {
 			this.equipItem(spawn, "orcHat");
 			this.equipItem(spawn, "orcGown");
 			this.equipItem(spawn, "axe");
+			this.equipItem(spawn, "leatherShoes");
 
 			spawn.setTag("orc");
 		}
