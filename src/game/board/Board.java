@@ -65,9 +65,13 @@ public class Board {
 					break;
 					case 0xff00ff00:
 						this.getTile(j, i).setTerrain("grass");
-						//addGrass(j, i);
+						//addGrass(j, i, "Grass");
+					break;
+					case 0xff00ee00:
+						this.getTile(j, i).setTerrain("fungi");
 					break;
 					case 0xff0000ff: this.getTile(j, i).setTerrain("water");
+						addGrass(j, i, "Water");
 					break;
 					case 0xff888888: this.getTile(j, i).setTerrain("stone");
 					break;
@@ -300,9 +304,9 @@ public class Board {
 		wall.setShifting(true);
 	}
 
-	public void addGrass(int x, int y) {
+	public void addGrass(int x, int y, String type) {
 		Tile tile = this.getTile(x, y);
-		Grass grass = new Grass(tile);
+		Grass grass = new Grass(tile, type);
 		grass.setInvincible(true);
 	}
 
@@ -317,6 +321,12 @@ public class Board {
 		Wall wall = null;
 		if(tile.getTerrain().getType().equals("sand")) {
 			wall = new Wall(tile, "palm");
+		} else if(tile.getTerrain().getType().equals("fungi")) {
+			if(Math.random() > 0.5) {
+				wall = new Wall(tile, "redGiantMushroom");
+			} else {
+				wall = new Wall(tile, "blueGiantMushroom");
+			}
 		} else {
 			wall = new Wall(tile, "tree");
 		}
@@ -370,12 +380,12 @@ public class Board {
 
 		// CLOCK
 		// ======================================
-		timer += dt / 10 * 5;
+		timer += dt / 10;
 		// System.out.println(timer + " / " + 1);
 		if(timer > 1) {
 
 			// day / night
-			if(time >= 0xffffffff || time <= 0xff444444) {
+			if(time >= 0xffffffff || time <= 0xff555555) {
 				timeUp = !timeUp;
 			}
 

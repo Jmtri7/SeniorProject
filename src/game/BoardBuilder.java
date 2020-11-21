@@ -498,7 +498,7 @@ public class BoardBuilder {
 					String terrain = line;
 
 					int pop = 0;
-					while(pop < maxPop) {
+					while(pop < maxPop && false) {
 						int randomX = (int) (gameBoard.getWidth() * Math.random());
 						int randomY = (int) (gameBoard.getWidth() * Math.random());
 						if(

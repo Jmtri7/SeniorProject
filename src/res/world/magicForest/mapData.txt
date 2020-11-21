@@ -11,8 +11,16 @@ ROUTES
 CRITTERS
 
 wisp
-0
+100
 any
+
+rabbit
+5
+grass
+
+spider
+5
+grass
 
 PLAYER
 
@@ -32,7 +40,7 @@ road
 1
 25
 
-magicForest
+forest
 24
 4
 24

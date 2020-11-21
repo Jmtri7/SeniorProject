@@ -12,6 +12,14 @@ palm
 80
 80
 
+redGiantMushroom
+80
+80
+
+blueGiantMushroom
+80
+80
+
 stoneWall
 20
 40
@@ -47,6 +55,10 @@ ff0000
 true
 
 grass
+null
+false
+
+fungi
 null
 false
 

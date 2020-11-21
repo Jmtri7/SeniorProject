@@ -12,13 +12,11 @@ import engine.gfx.ImageTile;
 import game.board.Tile;
 
 public class Grass extends Entity {
-	private static ImageTile image = new ImageTile("/res/tile/animatedGrass.png", 20, 40);
+	private Animation sway = new Animation("sway", 0.6f, Arrays.asList(0, 1));
 
-	private Animation sway = new Animation("sway", 0.5f, Arrays.asList(0, 1));
-
-	public Grass(Tile tile) {
-		super(tile, Grass.image);
-		setTag("grass");
+	public Grass(Tile tile, String type) {
+		super(tile, new ImageTile("/res/tile/animated" + type +".png", 20, 40));
+		setTag(type);
 	}
 
 	public void update(GameContainer gc, float dt) {
