@@ -40,16 +40,17 @@ public class Wall extends Entity {
 			float spriteY = y - imageMap.get(type).getTileH() + tileSize;
 
 			if(!isDead) {
-					if(true || shifting == true && tile.getBoard().getAmbientColor() <= 0xff555555) {
-						r.drawImageTile(imageMap.get(type), (int) spriteX, (int) spriteY, 0, 0);
-						blocking = false;
+					if(shifting == true) {
+						if(true || tile.getBoard().getAmbientColor() <= 0xff555555) {
+							r.drawImageTile(imageMap.get(type), (int) spriteX, (int) spriteY, 0, 0);
+							blocking = false;
+						}
+						else if(tile.getBoard().getAmbientColor() > 0xff555555) {
+							r.drawImageTile(imageMap.get(type), (int) spriteX, (int) spriteY, 1, 0);
+							blocking = true;
+						}
 					}
-					else if(shifting == true && tile.getBoard().getAmbientColor() > 0xff555555) {
-						r.drawImageTile(imageMap.get(type), (int) spriteX, (int) spriteY, 1, 0);
-						blocking = true;
-					}
-					else
-						r.drawImageTile(imageMap.get(type), (int) spriteX, (int) spriteY, 0, 0);
+					else r.drawImageTile(imageMap.get(type), (int) spriteX, (int) spriteY, 0, 0);
 
 				if(hp < hpMax) {
 					r.drawFillRect((int) x, (int) spriteY - 2, tileSize, 2, 0xffff0000);

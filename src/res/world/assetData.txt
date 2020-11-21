@@ -12,6 +12,10 @@ palm
 80
 80
 
+greatMushroom
+400
+320
+
 redGiantMushroom
 80
 80
@@ -168,43 +172,49 @@ bugDeath
 null
 null
 
+crab
+40
+40
+100
+10
+aaaa88
+bugInjury
+bugDeath
+null
+null
+
 FACTIONS
 
 hunters
 rabbits
-death clan
+wild
 end
 
-death clan
+woodcutters
+trees
+wild
+end
+
+trees
+end
+
+miners
+boulders
+wild
+end
+
+boulders
+end
+
+wild
 woodcutters
 miners
-knights
 hunters
-end
-
-woodcutters
-trees
-death clan
-end
-
-trees
-end
-
-miners
-boulders
-death clan
-end
-
-boulders
-end
-
-demons
 knights
 end
 
 knights
-demons
-death clan
+wild
 end
 
 rabbits

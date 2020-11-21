@@ -41,13 +41,15 @@ public class GameManager extends AbstractGame {
 			if(loading == true) {
 				gameBoard.stopMusic();
 
-				BoardBuilder.SavePlayer(gameBoard.getPlayer());
-
-				spawnX = gameBoard.getSpawnX();
-				spawnY = gameBoard.getSpawnY();
-
-				gameBoard = BoardBuilder.BuildBoard(gameBoard.switchTo(), spawnX, spawnY);
-
+				if(!gameBoard.getPlayer().isDead()) {
+					BoardBuilder.SavePlayer(gameBoard.getPlayer());
+					spawnX = gameBoard.getSpawnX();
+					spawnY = gameBoard.getSpawnY();
+					gameBoard = BoardBuilder.BuildBoard(gameBoard.switchTo(), spawnX, spawnY);
+				} else {
+					gameBoard = BoardBuilder.BuildBoard("forest");
+				}
+				
 				gameBoard.setSwitch(null);
 				loading = false;
 			}
@@ -67,7 +69,7 @@ public class GameManager extends AbstractGame {
 		}
 
 		// trigger on gameBoard requests switch to another board
-		if(gameBoard.switchTo() != null) {
+		if(gameBoard.switchTo() != null || gameBoard.getPlayer().isDead()) {
 			r.setCamX(0);
 			r.setCamY(0);
 			r.drawFillRect(0, 0, gc.getWidth(), gc.getHeight(), 0xff000000);

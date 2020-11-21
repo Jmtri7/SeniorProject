@@ -14,15 +14,11 @@ wisp
 50
 any
 
-crab
-5
-fungi
-
 PLAYER
 
 human
-15
-15
+14
+10
 
 ITEMS
 
@@ -32,8 +28,14 @@ PORTALS
 
 greatMushroom
 14
-0
+4
 14
-28
+8
+
+forest
+14
+29
+14
+1
 
 END

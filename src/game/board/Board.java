@@ -73,6 +73,9 @@ public class Board {
 					case 0xff0000ff: this.getTile(j, i).setTerrain("water");
 						addGrass(j, i, "Water");
 					break;
+					case 0xffee0000: this.getTile(j, i).setTerrain("water");
+						addGrass(j, i, "Sludge");
+					break;
 					case 0xff888888: this.getTile(j, i).setTerrain("stone");
 					break;
 					case 0xff907060: this.getTile(j, i).setTerrain("plank");
@@ -85,7 +88,13 @@ public class Board {
 				
 				int mapData = structureMap.getP()[i * structureMap.getW() + j];
 				if(mapData == 0xff000000) this.addWall(j, i, "none");
-				if(mapData == 0xff0000ff) this.addDecor(j, i, "greatTree");
+				if(mapData == 0xff0000ff) {
+					if(this.getTile(j, i).getTerrain().getType().equals("fungi")) {
+						this.addDecor(j, i, "greatMushroom");
+					} else {
+						this.addDecor(j, i, "greatTree");
+					}
+				}
 				if(mapData == 0xff888888) this.addWall(j, i, "stoneWall");
 				if(mapData == 0xff907060) this.addWall(j, i, "fence");
 				if(mapData == 0xff806050) this.addWall(j, i, "smallTable");
@@ -226,7 +235,7 @@ public class Board {
 		}
 		else if(type.equals("death clan warrior")) {
 			spawn  = new Humanoid(tile, "orc");
-			spawn.setFaction("death clan");
+			spawn.setFaction("wild");
 			this.equipItem(spawn, "orcHat");
 			this.equipItem(spawn, "orcGown");
 			this.equipItem(spawn, "axe");
@@ -235,7 +244,7 @@ public class Board {
 		}
 		else if(type.equals("skeleton")) {
 			spawn  = new Humanoid(tile, "skeleton");
-			spawn.setFaction("death clan");
+			spawn.setFaction("wild");
 			this.equipItem(spawn, "leatherHat");
 			this.equipItem(spawn, "leatherShoes");
 			this.equipItem(spawn, "axe");
@@ -262,16 +271,9 @@ public class Board {
 
 			spawn.setTag("wisp");
 		}
-		else if(type.equals("scorpion")) {
-			spawn  = new Creature(tile, "scorpion");
-			spawn.setFaction("demons");
-		}
-		else if(type.equals("demon")) {
-			spawn  = new Creature(tile, "demon");
-			spawn.setFaction("demons");
-		} else if(type.equals("spider")) {
-			spawn  = new Creature(tile, "spider");
-			spawn.setFaction("demons");
+		else {
+			spawn  = new Creature(tile, type);
+			spawn.setFaction("wild");
 		}
 
 		return spawn;

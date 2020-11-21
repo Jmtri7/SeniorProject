@@ -17,6 +17,9 @@ public class PlayerController {
 	}
 
 	public void update(GameContainer gc, float dt) {
+		if(player.isDead() && gc.getInput().isKeyDown(KeyEvent.VK_SPACE)) {
+			System.out.println("dead");
+		}
 
 		if(gc.getInput().isKey(KeyEvent.VK_SHIFT) || gc.getInput().isKey(KeyEvent.VK_SPACE)) {
 			if(gc.getInput().isKey(KeyEvent.VK_W)) {

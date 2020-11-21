@@ -92,7 +92,7 @@ city
 forest
 0
 25
-48
-35
+28
+15
 
 END

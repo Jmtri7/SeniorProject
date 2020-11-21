@@ -11,14 +11,18 @@ ROUTES
 CRITTERS
 
 wisp
-0
+25
 any
+
+spider
+5
+grass
 
 PLAYER
 
 human
-24
-10
+28
+15
 
 ITEMS
 
@@ -26,16 +30,16 @@ CREATURES
 
 PORTALS
 
+greatTree
+14
+0
+14
+28
+
 road
-49
-35
+29
+15
 1
 25
-
-magicForest
-24
-4
-24
-8
 
 END
