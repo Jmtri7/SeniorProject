@@ -2,7 +2,7 @@ BOARD
 
 20
 888888
-forest
+apraise
 
 ZONES
 
@@ -11,12 +11,19 @@ ROUTES
 CRITTERS
 
 wisp
-25
+10
 any
+fauna
 
 spider
 5
 grass
+fauna
+
+flower
+100
+grass
+flora
 
 PLAYER
 

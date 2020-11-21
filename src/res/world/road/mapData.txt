@@ -45,6 +45,10 @@ end
 
 CRITTERS
 
+wisp
+5
+any
+
 rabbit
 20
 grass
@@ -56,8 +60,8 @@ grass
 PLAYER
 
 human
-43
-25
+34
+29
 
 ITEMS
 
@@ -83,7 +87,7 @@ side path
 
 PORTALS
 
-city
+docks
 49
 25
 1

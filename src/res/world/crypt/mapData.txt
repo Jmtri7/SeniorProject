@@ -20,10 +20,12 @@ CRITTERS
 skeleton
 5
 stone
+fauna
 
 spider
 5
 stone
+fauna
 
 PLAYER
 

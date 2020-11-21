@@ -61,16 +61,16 @@ sentry
 
 PORTALS
 
-city
+docks
 4
 10
 8
-11
+6
 
-city
+docks
 5
 10
 9
-11
+6
 
 END

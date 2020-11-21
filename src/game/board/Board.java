@@ -73,7 +73,7 @@ public class Board {
 					case 0xff0000ff: this.getTile(j, i).setTerrain("water");
 						addGrass(j, i, "Water");
 					break;
-					case 0xffee0000: this.getTile(j, i).setTerrain("water");
+					case 0xffee0000: this.getTile(j, i).setTerrain("lava");
 						addGrass(j, i, "Sludge");
 					break;
 					case 0xff888888: this.getTile(j, i).setTerrain("stone");
@@ -190,13 +190,15 @@ public class Board {
 		}
 		else if(type.equals("man")) {
 			spawn  = new Humanoid(tile, "human");
-			this.equipItem(spawn, "peasantGownBrown");
-			this.equipItem(spawn, "leatherShoes");
+			spawn.setFaction("hunters");
+			this.equipItem(spawn, "whiteShirt");
+			this.equipItem(spawn, "bluePants");
 
 			spawn.setTag("man");
 		}
 		else if(type.equals("peasant")) {
 			spawn  = new Humanoid(tile, "human");
+			spawn.setFaction("hunters");
 			this.equipItem(spawn, "leatherHat");
 			this.equipItem(spawn, "peasantGownBrown");
 			this.equipItem(spawn, "leatherShoes");
@@ -232,6 +234,24 @@ public class Board {
 			this.equipItem(spawn, "bow");
 
 			spawn.setTag("woodcutter");
+		}
+		else if(type.equals("sailor")) {
+			spawn  = new Humanoid(tile, "human");
+			spawn.setFaction("hunters");
+			this.equipItem(spawn, "sailorHat");
+			this.equipItem(spawn, "whiteShirt");
+			this.equipItem(spawn, "bluePants");
+
+			spawn.setTag("sailor");
+		}
+		else if(type.equals("nomad")) {
+			spawn  = new Humanoid(tile, "human");
+			spawn.setFaction("hunters");
+			this.equipItem(spawn, "turban");
+			this.equipItem(spawn, "whiteShirt");
+			this.equipItem(spawn, "leatherShoes");
+
+			spawn.setTag("nomad");
 		}
 		else if(type.equals("death clan warrior")) {
 			spawn  = new Humanoid(tile, "orc");

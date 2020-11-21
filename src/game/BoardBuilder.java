@@ -470,22 +470,6 @@ public class BoardBuilder {
 
 			if(line.equals("CRITTERS")) {
 				scanner.nextLine();
-
-				// add flora section
-				for(int j = 0; j < gameBoard.getHeight(); j++) {
-					for(int i = 0; i < gameBoard.getWidth(); i++) {
-						if(
-							gameBoard.getTile(i, j).getTerrain() != null
-							&& gameBoard.getTile(i, j).getTerrain().getType().equals("grass")
-							&& !gameBoard.getTile(i, j).isBlocked()
-						) {
-							int random = (int) (100 * Math.random()) + 1;
-							if(random <= 10) {
-								gameBoard.addPlant(i, j);
-							}
-						}	
-					}
-				}
 				
 				line = scanner.nextLine();
 				while(!line.equals("PLAYER")) {
@@ -497,18 +481,27 @@ public class BoardBuilder {
 					line = scanner.nextLine();
 					String terrain = line;
 
+					line = scanner.nextLine();
+					String type = line;
+
 					int pop = 0;
 					while(pop < maxPop) {
 						int randomX = (int) (gameBoard.getWidth() * Math.random());
 						int randomY = (int) (gameBoard.getWidth() * Math.random());
+
 						if(
 							(gameBoard.getTile(randomX, randomY).getTerrain().getType().equals(terrain)
 							&& !gameBoard.getTile(randomX, randomY).isBlocked()) ||
 								terrain.equals("any")
 						) {
-							gameBoard.spawn(randomX, randomY, species, "wander");
+							if(type.equals("fauna")) {
+								gameBoard.spawn(randomX, randomY, species, "wander");
+							} else if(type.equals("flora")) {
+								gameBoard.addPlant(randomX, randomY);
+							}
+							
 							pop++;
-						}
+						}	
 					}
 
 					scanner.nextLine();

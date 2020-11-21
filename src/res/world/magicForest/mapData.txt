@@ -2,7 +2,7 @@ BOARD
 
 20
 888888
-forest
+interloper
 
 ZONES
 

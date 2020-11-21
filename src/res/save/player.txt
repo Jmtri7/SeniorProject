@@ -1,4 +1,4 @@
--5592406
+-6710887
 true
 
 human
@@ -20,5 +20,17 @@ true
 leatherHat
 equipment
 true
+
+sailorHat
+equipment
+false
+
+whiteShirt
+equipment
+false
+
+bluePants
+equipment
+false
 
 END

@@ -11,7 +11,7 @@ ROUTES
 CRITTERS
 
 wisp
-50
+20
 any
 
 PLAYER

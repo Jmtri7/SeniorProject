@@ -243,8 +243,8 @@ public class Humanoid extends Creature {
 						r.drawImageTile(legs, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(shoes != null) r.drawImageTile(shoes.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						r.drawImageTile(torso, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
+						if(shoes == null && underwear != null) r.drawImageTile(underwear, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(shirt != null) r.drawImageTile(shirt.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
-						else if(underwear != null) r.drawImageTile(underwear, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						r.drawImageTile(leftArm, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 					break;
 					case 1:
@@ -252,8 +252,8 @@ public class Humanoid extends Creature {
 						r.drawImageTile(legs, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(shoes != null) r.drawImageTile(shoes.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						r.drawImageTile(torso, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
+						if(shoes == null && underwear != null) r.drawImageTile(underwear, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(shirt != null) r.drawImageTile(shirt.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
-						else if(underwear != null) r.drawImageTile(underwear, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						r.drawImageTile(rightArm, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(weapon != null) r.drawImageTile(weapon.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 					break;
@@ -262,8 +262,8 @@ public class Humanoid extends Creature {
 						r.drawImageTile(legs, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(shoes != null) r.drawImageTile(shoes.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						r.drawImageTile(torso, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
+						if(shoes == null && underwear != null) r.drawImageTile(underwear, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(shirt != null) r.drawImageTile(shirt.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
-						else if(underwear != null) r.drawImageTile(underwear, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						r.drawImageTile(leftArm, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(weapon != null) r.drawImageTile(weapon.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 					break;
@@ -273,8 +273,8 @@ public class Humanoid extends Creature {
 						r.drawImageTile(legs, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(shoes != null) r.drawImageTile(shoes.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						r.drawImageTile(torso, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
+						if(shoes == null && underwear != null) r.drawImageTile(underwear, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						if(shirt != null) r.drawImageTile(shirt.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
-						else if(underwear != null) r.drawImageTile(underwear, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 						r.drawImageTile(leftArm, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 					break;
 				}

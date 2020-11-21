@@ -8,44 +8,47 @@ ZONES
 
 ROUTES
 
-city path
+guard
 1
-13
-10
-13
-20
-13
-26
-13
-26
-1
-26
-13
-20
-13
-10
-13
+9
+11
+9
+21
+9
+25
+9
+25
+19
+25
+9
+21
+9
+11
+9
 end
 
 CRITTERS
 
 man
 2
-grass
+stone
+fauna
 
 peasant
 2
-grass
+stone
+fauna
 
 maid
 2
-grass
+stone
+fauna
 
 PLAYER
 
 human
 8
-12
+7
 
 ITEMS
 
@@ -53,9 +56,9 @@ CREATURES
 
 knight
 1
-13
+9
 patrol
-city path
+guard
 
 PORTALS
 
@@ -79,25 +82,25 @@ graveyard
 
 tavern
 8
-10
+5
 4
 9
 
 tavern
 9
-10
+5
 5
 9
 
-desert
+beach
 14
-24
-42
-63
+14
+22
+31
 
 road
 0
-13
+8
 48
 25
 
