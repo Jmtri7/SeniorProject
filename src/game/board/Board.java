@@ -181,7 +181,7 @@ public class Board {
 			this.equipItem(spawn, "breastPlate");
 			this.equipItem(spawn, "ironPlatelegs");
 			this.equipItem(spawn, "leatherShoes");
-			this.equipItem(spawn, "morningstar");
+			this.equipItem(spawn, "shortsword");
 		}
 		else if(type.equals("fool")) {
 			spawn  = new Humanoid(tile, "human");
@@ -253,7 +253,7 @@ public class Board {
 			this.equipItem(spawn, "pirateShirt");
 			this.equipItem(spawn, "redPants");
 			this.equipItem(spawn, "leatherShoes");
-			this.equipItem(spawn, "morningstar");
+			this.equipItem(spawn, "shortsword");
 
 			spawn.setTag("pirate");
 		}

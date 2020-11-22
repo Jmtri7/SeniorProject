@@ -1,4 +1,4 @@
--7829368
+-8947849
 false
 
 human
@@ -13,17 +13,9 @@ axe
 equipment
 false
 
-ironPlatelegs
-equipment
-true
-
-maidHair
-equipment
-true
-
 maidGown
 equipment
-true
+false
 
 bow
 equipment
@@ -31,14 +23,22 @@ false
 
 morningstar
 equipment
+false
+
+shortsword
+equipment
 true
 
-scrollFireNova
-consumable
-false
+sailorShirt
+equipment
+true
 
-scrollFireNova
-consumable
-false
+bluePants
+equipment
+true
+
+maidHair
+equipment
+true
 
 END

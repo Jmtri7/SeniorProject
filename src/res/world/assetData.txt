@@ -246,6 +246,18 @@ weapon
 0
 chopping
 
+sword
+weapon
+29
+0
+slicing
+
+shortsword
+weapon
+29
+0
+slicing
+
 morningstar
 weapon
 29
