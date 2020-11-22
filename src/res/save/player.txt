@@ -1,5 +1,5 @@
--6710887
-true
+-3355444
+false
 
 human
 knights
@@ -9,11 +9,19 @@ leatherShoes
 equipment
 true
 
-axe
+pirateHat
 equipment
-false
+true
 
-bow
+pirateShirt
+equipment
+true
+
+redPants
+equipment
+true
+
+shortsword
 equipment
 true
 
@@ -21,20 +29,12 @@ morningstar
 equipment
 false
 
-shortsword
+axe
 equipment
 false
 
-sailorShirt
+bow
 equipment
-true
-
-bluePants
-equipment
-true
-
-maidHair
-equipment
-true
+false
 
 END
