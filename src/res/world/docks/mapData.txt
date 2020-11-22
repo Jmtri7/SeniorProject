@@ -90,6 +90,24 @@ graveyard
 11
 19
 
+city
+29
+7
+1
+14
+
+city
+29
+8
+1
+15
+
+city
+29
+9
+1
+16
+
 tavern
 8
 5

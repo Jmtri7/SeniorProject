@@ -1,5 +1,5 @@
--8947849
-false
+-6710887
+true
 
 human
 knights
@@ -13,13 +13,9 @@ axe
 equipment
 false
 
-maidGown
-equipment
-false
-
 bow
 equipment
-false
+true
 
 morningstar
 equipment
@@ -27,7 +23,7 @@ false
 
 shortsword
 equipment
-true
+false
 
 sailorShirt
 equipment

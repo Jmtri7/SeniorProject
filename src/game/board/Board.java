@@ -250,6 +250,7 @@ public class Board {
 		else if(type.equals("pirate")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("wild");
+			this.equipItem(spawn, "pirateHat");
 			this.equipItem(spawn, "pirateShirt");
 			this.equipItem(spawn, "redPants");
 			this.equipItem(spawn, "leatherShoes");
