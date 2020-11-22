@@ -1,13 +1,9 @@
--1118482
-true
+-7829368
+false
 
 human
 knights
 0.3
-
-bow
-equipment
-false
 
 leatherShoes
 equipment
@@ -15,7 +11,7 @@ true
 
 axe
 equipment
-true
+false
 
 ironPlatelegs
 equipment
@@ -28,5 +24,21 @@ true
 maidGown
 equipment
 true
+
+bow
+equipment
+false
+
+morningstar
+equipment
+true
+
+scrollFireNova
+consumable
+false
+
+scrollFireNova
+consumable
+false
 
 END

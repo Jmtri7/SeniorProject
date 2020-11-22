@@ -246,6 +246,12 @@ weapon
 0
 chopping
 
+morningstar
+weapon
+29
+0
+blunt
+
 peasantGownGray
 shirt
 0
@@ -333,19 +339,19 @@ none
 knightHelm
 hat
 0
-0
+0.2
 none
 
 breastPlate
 shirt
 0
-0
+0.2
 none
 
 ironPlatelegs
 pants
 0
-0
+0.2
 none
 
 orcHat

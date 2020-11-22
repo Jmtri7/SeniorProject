@@ -181,6 +181,7 @@ public class Board {
 			this.equipItem(spawn, "breastPlate");
 			this.equipItem(spawn, "ironPlatelegs");
 			this.equipItem(spawn, "leatherShoes");
+			this.equipItem(spawn, "morningstar");
 		}
 		else if(type.equals("fool")) {
 			spawn  = new Humanoid(tile, "human");
@@ -252,7 +253,7 @@ public class Board {
 			this.equipItem(spawn, "pirateShirt");
 			this.equipItem(spawn, "redPants");
 			this.equipItem(spawn, "leatherShoes");
-			this.equipItem(spawn, "axe");
+			this.equipItem(spawn, "morningstar");
 
 			spawn.setTag("pirate");
 		}
@@ -262,6 +263,7 @@ public class Board {
 			this.equipItem(spawn, "turban");
 			this.equipItem(spawn, "redPants");
 			this.equipItem(spawn, "leatherShoes");
+			this.equipItem(spawn, "morningstar");
 
 			spawn.setTag("nomad");
 		}
@@ -270,8 +272,8 @@ public class Board {
 			spawn.setFaction("wild");
 			this.equipItem(spawn, "orcHat");
 			this.equipItem(spawn, "orcGown");
-			this.equipItem(spawn, "axe");
 			this.equipItem(spawn, "leatherShoes");
+			this.equipItem(spawn, "morningstar");
 
 			spawn.setTag("orc");
 		}
@@ -280,7 +282,7 @@ public class Board {
 			spawn.setFaction("wild");
 			this.equipItem(spawn, "leatherHat");
 			this.equipItem(spawn, "leatherShoes");
-			this.equipItem(spawn, "axe");
+			this.equipItem(spawn, "morningstar");
 
 			spawn.setTag("skeleton");
 		}
