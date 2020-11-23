@@ -11,7 +11,7 @@ public class Portal extends Entity {
 	private int outY;
 
 	public Portal(Tile tile, String destination, int outX, int outY) {
-		super(tile, null);
+		super(tile);
 
 		this.destination = destination;
 

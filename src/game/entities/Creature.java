@@ -30,7 +30,7 @@ public class Creature extends Entity {
 	protected ArrayList<Equipment> equipment = new ArrayList<Equipment>();
 
 	public Creature(Tile tile, String type) {
-		super(tile, null);
+		super(tile);
 		this.species = Species.getSpecies(type);
 		if(this.species != null) {
 			this.image = species.getImage();

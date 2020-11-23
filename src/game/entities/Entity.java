@@ -7,6 +7,8 @@ import engine.audio.SoundClip;
 import engine.gfx.ImageTile;
 import engine.gfx.Light;
 
+import game.AudioLoader;
+
 import game.board.Tile;
 
 import java.util.ArrayList;
@@ -40,6 +42,27 @@ public class Entity extends Sprite {
 	protected SoundClip deathNoise;
 
 	protected String weakness;
+
+	public Entity(Tile tile) {
+		super(tile.getX() * tile.getSize(), tile.getY() * tile.getSize());
+		this.tile = tile;
+		this.tile.addEntity(this);
+
+		this.blocking = false;
+		this.hpMax = 16;
+		this.hp = this.hpMax;
+		this.isDead = false;
+		this.respawns = false;
+		this.invincible = false;
+		this.respawnTime = 0;
+		this.respawnTimer = this.respawnTime;
+		this.isFloating = false;
+
+		this.weakness = null;
+
+		this.id = Entity.entityId;
+		Entity.entityId++;
+	}
 
 	public Entity(Tile tile, ImageTile image) {
 		super(tile.getX() * tile.getSize(), tile.getY() * tile.getSize(), image);
@@ -76,6 +99,29 @@ public class Entity extends Sprite {
 		this.respawnTimer = this.respawnTime;
 
 		this.weakness = null;
+	}
+
+	// UNTESTED
+	// entity relying on image ID
+	public Entity(Tile tile, String imageId) {
+		super(tile.getX() * tile.getSize(), tile.getY() * tile.getSize(), imageId);
+		this.tile = tile;
+		this.tile.addEntity(this);
+
+		this.blocking = false;
+		this.hpMax = 16;
+		this.hp = this.hpMax;
+		this.isDead = false;
+		this.respawns = false;
+		this.invincible = false;
+		this.respawnTime = 0;
+		this.respawnTimer = this.respawnTime;
+		this.isFloating = false;
+
+		this.weakness = null;
+
+		this.id = Entity.entityId;
+		Entity.entityId++;
 	}
 
 	public void update(GameContainer gc, float dt) {
@@ -162,11 +208,13 @@ public class Entity extends Sprite {
 	}
 
 	public void setDamageNoise(String name) {
-		this.damageNoise = new SoundClip("/res/sounds/" + name + ".wav");
+		SoundClip noise = AudioLoader.getAudio(name);
+		if(noise == null) this.damageNoise = AudioLoader.safeLoad(name, "/res/sounds/" + name + ".wav");
 	}
 
 	public void setDeathNoise(String name) {
-		this.deathNoise = new SoundClip("/res/sounds/" + name + ".wav");
+		SoundClip noise = AudioLoader.getAudio(name);
+		if(noise == null) this.deathNoise = AudioLoader.safeLoad(name, "/res/sounds/" + name + ".wav");
 	}
 
 	public void setFaction(String factionName) {

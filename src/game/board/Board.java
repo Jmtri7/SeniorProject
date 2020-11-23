@@ -14,6 +14,7 @@ import engine.gfx.Light;
 import engine.audio.SoundClip;
 
 import game.Camera;
+import game.AudioLoader;
 import game.controllers.AIController;
 import game.controllers.PlayerController;
 import game.entities.Creature;
@@ -71,10 +72,10 @@ public class Board {
 						this.getTile(j, i).setTerrain("fungi");
 					break;
 					case 0xff0000ff: this.getTile(j, i).setTerrain("water");
-						addGrass(j, i, "Water");
+						addGrass(j, i, "animatedWater");
 					break;
 					case 0xffee0000: this.getTile(j, i).setTerrain("lava");
-						addGrass(j, i, "Sludge");
+						addGrass(j, i, "animatedSludge");
 					break;
 					case 0xff888888: this.getTile(j, i).setTerrain("stone");
 					break;
@@ -637,7 +638,7 @@ public class Board {
 
 	public void setDefaultMusic(String name) {
 		if (name.equals("null")) defaultMusic = null;
-		else defaultMusic = new SoundClip("/res/music/" + name + ".wav");
+		else defaultMusic = AudioLoader.safeLoad(name, "/res/music/" + name + ".wav");
 		music = defaultMusic;
 	}
 

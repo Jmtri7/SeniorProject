@@ -18,11 +18,10 @@ public class Wall extends Entity {
 	private boolean shifting = false;
 
 	public Wall(Tile tile, String type) {
-		super(tile, null);
+		super(tile);
 
 		this.type = type;
 		this.blocking = true;
-
 
 		this.tag = "obstacle";
 	}

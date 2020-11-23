@@ -144,12 +144,38 @@ public class BoardBuilder {
 	}
 
 	static void LoadAssets() {
+		ImageLoader.loadImage("animatedGrass", "/res/tile/animatedGrass.png", 20, 40);
+		ImageLoader.loadImage("animatedWater", "/res/tile/animatedWater.png", 20, 40);
+		ImageLoader.loadImage("animatedSludge", "/res/tile/animatedSludge.png", 20, 40);
+
+		AudioLoader.loadAudio("chopping", "/res/sounds/chopping.wav");
+		AudioLoader.loadAudio("treeDeath", "/res/sounds/treeDeath.wav");
+
+		AudioLoader.loadAudio("mining", "/res/sounds/mining.wav");
+
 		try {
 			File assetData = new File("res/world/assetData.txt");
 			Scanner scanner = new Scanner(assetData);
 			String line = "";
 
 			line = scanner.nextLine();
+			if(line.equals("MUSIC")) {
+				scanner.nextLine();
+
+				String name;
+
+				line = scanner.nextLine();
+				while(!line.equals("STRUCTURES")) {
+
+					name = line;
+
+					AudioLoader.loadAudio(name, "/res/music/" + name + ".wav");
+
+					scanner.nextLine();
+					line = scanner.nextLine();
+				}
+			}
+
 			if(line.equals("STRUCTURES")) {
 				scanner.nextLine();
 
@@ -242,17 +268,17 @@ public class BoardBuilder {
 					line = scanner.nextLine();
 					SoundClip injurySound;
 					if(line.equals("null")) injurySound = null;
-					else injurySound = new SoundClip("/res/sounds/" + line + ".wav");
+					else injurySound = AudioLoader.safeLoad(line, "/res/sounds/" + line + ".wav");
 
 					line = scanner.nextLine();
 					SoundClip deathSound;
 					if(line.equals("null")) deathSound = null;
-					else deathSound = new SoundClip("/res/sounds/" + line + ".wav");
+					else deathSound = AudioLoader.safeLoad(line, "/res/sounds/" + line + ".wav");
 
 					line = scanner.nextLine();
 					SoundClip attackSound;
 					if(line.equals("null")) attackSound = null;
-					else attackSound = new SoundClip("/res/sounds/" + line + ".wav");
+					else attackSound = AudioLoader.safeLoad(line, "/res/sounds/" + line + ".wav");
 
 					line = scanner.nextLine();
 
@@ -427,7 +453,7 @@ public class BoardBuilder {
 					line = scanner.nextLine();
 					SoundClip music;
 					if(line.equals("null")) music = null;
-					else music = new SoundClip("/res/music/" + line + ".wav");
+					else music = AudioLoader.safeLoad(line, "/res/music/" + line + ".wav");
 
 					gameBoard.addZone(
 						x, y,

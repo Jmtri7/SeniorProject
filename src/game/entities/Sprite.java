@@ -7,11 +7,25 @@ import engine.gfx.ImageTile;
 
 // A graphic with a position on the screen
 public class Sprite {
-	protected ImageTile image;
+	protected ImageTile image = null;
 	protected float x, y;
+
+	// use this instead of an image
+	protected String imageId = null;
+
+	public Sprite(float x, float y) {
+		this.x = x;
+		this.y = y;
+	}
 
 	public Sprite(float x, float y, ImageTile image) {
 		this.image = image;
+		this.x = x;
+		this.y = y;
+	}
+
+	public Sprite(float x, float y, String imageId) {
+		this.imageId = imageId;
 		this.x = x;
 		this.y = y;
 	}
