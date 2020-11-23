@@ -20,7 +20,7 @@ public class GameManager extends AbstractGame {
 
 	public GameManager() {
 		BoardBuilder.LoadAssets();
-		gameBoard = BoardBuilder.BuildBoard("coast");
+		gameBoard = BoardBuilder.BuildBoard("city");
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class GameManager extends AbstractGame {
 					spawnY = gameBoard.getSpawnY();
 					gameBoard = BoardBuilder.BuildBoard(gameBoard.switchTo(), spawnX, spawnY);
 				} else {
-					gameBoard = BoardBuilder.BuildBoard("coast");
+					gameBoard = BoardBuilder.BuildBoard("city");
 				}
 				
 				gameBoard.setSwitch(null);
