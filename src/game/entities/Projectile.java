@@ -61,6 +61,10 @@ public class Projectile extends Entity {
 		map.put(type, this);
 	}
 
+	public boolean isProjectile() {
+		return true;
+	}
+
 	// actions
 
 	public void damage(int damage, String damageType) {

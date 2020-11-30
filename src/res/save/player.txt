@@ -1,8 +1,8 @@
--3355444
-false
+-7829368
+true
 
 human
-knights
+player
 0.3
 
 shortsword

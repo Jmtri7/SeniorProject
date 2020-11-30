@@ -137,6 +137,10 @@ public class Entity extends Sprite {
 	public void render(GameContainer gc, Renderer r) {
 	}
 
+	public boolean isProjectile() {
+		return false;
+	}
+
 	public void damage(int damage, String damageType) {
 		if(!invincible && !isDead) {
 			this.hp -= damage;

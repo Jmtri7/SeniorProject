@@ -239,9 +239,9 @@ public class Humanoid extends Creature {
 					damage += weapon.getDamageModifier();
 
 					if(weapon.getTag().equals("bow")) new Projectile(destination, "arrow", direction);
-					else this.destination.hit(damage, weapon.getDamageType());
+					else this.destination.hit(this, damage, weapon.getDamageType());
 				} else {
-					this.destination.hit(damage, "unarmed");
+					this.destination.hit(this, damage, "unarmed");
 				}
 
 				attacking.start();

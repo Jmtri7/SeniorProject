@@ -203,6 +203,9 @@ null
 
 FACTIONS
 
+player
+end
+
 hunters
 rabbits
 wild

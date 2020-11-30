@@ -29,6 +29,9 @@ public class Creature extends Entity {
 
 	protected ArrayList<Equipment> equipment = new ArrayList<Equipment>();
 
+	// temporary agression towards player
+	protected boolean angryAtPlayer = false;
+
 	public Creature(Tile tile, String type) {
 		super(tile);
 		this.species = Species.getSpecies(type);
@@ -99,6 +102,14 @@ public class Creature extends Entity {
 
 	public Inventory getInventory() {
 		return inventory;
+	}
+
+	public boolean isAngryAtPlayer() {
+		return angryAtPlayer;
+	}
+
+	public void setAngryAtPlayer(boolean value) {
+		angryAtPlayer = value;
 	}
 
 	// ACTIONS

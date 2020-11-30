@@ -85,6 +85,20 @@ public class Tile {
 
 	// tile attacked
 
+	// TEST knows who hit
+	public void hit(Entity attacker, int damage, String damageType) {
+		for(int i = 0; i < entities.size(); i++) {
+			Entity target = entities.get(i);
+
+			if(attacker.getFaction().getName().equals("player") && !target.getFaction().isEnemy("player")) {
+				target.getFaction().setEnemy("player");
+			}
+
+			target.damage(damage, damageType);
+			//if(target.isDead()) i--;
+		}
+	}
+
 	public void hit(int damage, String damageType) {
 		for(int i = 0; i < entities.size(); i++) {
 			Entity target = entities.get(i);

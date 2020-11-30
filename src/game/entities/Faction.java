@@ -24,6 +24,10 @@ public class Faction {
 		return name;
 	}
 
+	public void setEnemy(String enemyName) {
+		this.enemies.add(enemyName);
+	}
+
 	public boolean isEnemy(String enemyName) {
 		// check the list of enemies
 		for(int i = 0; i < enemies.size(); i++)

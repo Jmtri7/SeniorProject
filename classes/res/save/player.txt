@@ -1,25 +1,9 @@
--5592406
-true
+-7829368
+false
 
 human
-knights
+player
 0.3
-
-leatherShoes
-equipment
-true
-
-pirateHat
-equipment
-true
-
-pirateShirt
-equipment
-true
-
-redPants
-equipment
-true
 
 shortsword
 equipment
@@ -27,13 +11,29 @@ false
 
 morningstar
 equipment
-false
+true
 
 axe
 equipment
 false
 
 bow
+equipment
+false
+
+royalCrown
+equipment
+true
+
+royalRobe
+equipment
+true
+
+ironPlatelegs
+equipment
+true
+
+leatherShoes
 equipment
 true
 
