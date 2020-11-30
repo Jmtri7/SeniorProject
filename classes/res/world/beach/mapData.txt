@@ -75,6 +75,18 @@ cargo
 
 PORTALS
 
+desert
+0
+17
+38
+36
+
+jungle
+22
+0
+22
+38
+
 docks
 22
 32

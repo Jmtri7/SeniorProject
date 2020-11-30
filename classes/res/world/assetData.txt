@@ -300,6 +300,18 @@ shirt
 0
 none
 
+royalCrown
+hat
+0
+0
+none
+
+royalRobe
+shirt
+0
+0
+none
+
 foolHat
 hat
 0

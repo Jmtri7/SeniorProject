@@ -11,7 +11,7 @@ ROUTES
 CRITTERS
 
 crab
-1
+5
 sand
 fauna
 
@@ -30,6 +30,11 @@ pirate
 5
 sentry
 
+pirate
+30
+3
+sentry
+
 PORTALS
 
 beach
@@ -43,5 +48,11 @@ beach
 17
 38
 26
+
+boarding
+27
+2
+25
+25
 
 END

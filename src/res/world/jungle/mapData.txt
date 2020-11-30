@@ -2,7 +2,7 @@ BOARD
 
 20
 888888
-intense
+forest
 
 ZONES
 
@@ -10,15 +10,11 @@ ROUTES
 
 CRITTERS
 
-scorpion
-10
-sand
-
 PLAYER
 
 human
-8
-11
+22
+38
 
 ITEMS
 
@@ -26,10 +22,10 @@ CREATURES
 
 PORTALS
 
-docks
-42
-64
-14
-23
+beach
+22
+39
+22
+1
 
 END

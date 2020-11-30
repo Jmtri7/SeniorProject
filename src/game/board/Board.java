@@ -175,6 +175,14 @@ public class Board {
 			this.equipItem(spawn, "bow");
 			this.equipItem(spawn, "breastPlate");
 		}
+		else if(type.equals("king")) {
+			spawn  = new Humanoid(tile, "human");
+			spawn.setFaction("knights");
+			this.equipItem(spawn, "royalCrown");
+			this.equipItem(spawn, "royalRobe");
+			this.equipItem(spawn, "ironPlatelegs");
+			this.equipItem(spawn, "leatherShoes");
+		}
 		else if(type.equals("knight")) {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("knights");

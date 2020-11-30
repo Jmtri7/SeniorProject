@@ -20,6 +20,11 @@ ITEMS
 
 CREATURES
 
+king
+15
+2
+sentry
+
 knight
 10
 24

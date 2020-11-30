@@ -8,34 +8,37 @@ ZONES
 
 ROUTES
 
-CRITTERS
-
-scorpion
+charge
+14
 10
-sand
-fauna
+14
+21
+end
 
-nomad
-2
-sand
-fauna
+CRITTERS
 
 PLAYER
 
 human
-38
-36
+14
+20
 
 ITEMS
 
 CREATURES
 
+rabbit
+14
+10
+patrol
+charge
+
 PORTALS
 
-beach
-39
-36
-1
-17
+pirateShip
+14
+10
+4
+19
 
 END

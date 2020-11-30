@@ -1,5 +1,5 @@
--1118482
-false
+-5592406
+true
 
 human
 knights
@@ -23,7 +23,7 @@ true
 
 shortsword
 equipment
-true
+false
 
 morningstar
 equipment
@@ -35,6 +35,6 @@ false
 
 bow
 equipment
-false
+true
 
 END
