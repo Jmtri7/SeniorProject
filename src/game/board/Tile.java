@@ -90,7 +90,11 @@ public class Tile {
 		for(int i = 0; i < entities.size(); i++) {
 			Entity target = entities.get(i);
 
-			if(attacker.getFaction().getName().equals("player") && !target.getFaction().isEnemy("player")) {
+			if(
+				target.getFaction() != null
+				&& attacker.getFaction().getName().equals("player")
+				&& !target.getFaction().isEnemy("player")
+			) {
 				target.getFaction().setEnemy("player");
 			}
 

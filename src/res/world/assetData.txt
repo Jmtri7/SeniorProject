@@ -66,6 +66,10 @@ cactus
 20
 40
 
+bush
+40
+40
+
 TILESET
 
 water
@@ -107,7 +111,7 @@ skeleton
 40
 100
 10
-ffffff
+eeeeee
 mining
 mining
 null
@@ -118,7 +122,7 @@ human
 40
 100
 1
-ffffff
+eeeeee
 humanInjury
 humanDeath
 null
@@ -228,6 +232,7 @@ boulders
 end
 
 wild
+player
 woodcutters
 miners
 hunters
@@ -257,13 +262,13 @@ blunt
 
 pickaxe
 weapon
-9
+1
 0
 picking
 
 axe
 weapon
-9
+1
 0
 chopping
 
@@ -323,6 +328,12 @@ none
 
 whiteShirt
 shirt
+0
+0
+none
+
+captainsHat
+hat
 0
 0
 none
@@ -412,7 +423,7 @@ shirt
 none
 
 maidHair
-hat
+hair
 0
 0
 none

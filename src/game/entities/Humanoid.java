@@ -24,6 +24,8 @@ public class Humanoid extends Creature {
 
 	protected ImageTile underwear;
 
+	protected Equipment hair;
+
 	protected Equipment hat;
 	protected Equipment shirt;
 	protected Equipment pants;
@@ -45,7 +47,31 @@ public class Humanoid extends Creature {
 	}
 
 	public void equip(Equipment item) {
-		if(item.getSlot().equals("hat")) {
+		if(item.getSlot().equals("hair")) {
+			// wearing a hat
+			if(hair != null) {
+				// wearing that hat
+				if(item.getId() == hair.getId()) {
+					hair.setEquipped(false);
+					hair = null;
+					return;
+				}
+				// wearing a different hat
+				else {
+					hair.setEquipped(false);
+					hair = item;
+					hair.setEquipped(true);
+					return;
+				}
+			}
+			// not wearing any hat
+			else {
+				hair = item;
+				hair.setEquipped(true);
+			}
+
+			return;
+		} else if(item.getSlot().equals("hat")) {
 			// wearing a hat
 			if(hat != null) {
 				// wearing that hat
@@ -156,7 +182,14 @@ public class Humanoid extends Creature {
 		Item item = inventory.getSelectedItem();
 
 		if(item != null) {
-			if(item.getSlot().equals("hat")) {
+			if(item.getSlot().equals("hair")) {
+				if(hair != null) {
+					if(item.getId() == hair.getId()) {
+						hair.setEquipped(false);
+						hair = null;
+					}
+				}
+			} else if(item.getSlot().equals("hat")) {
 				if(hat != null) {
 					if(item.getId() == hat.getId()) {
 						hat.setEquipped(false);
@@ -315,9 +348,9 @@ public class Humanoid extends Creature {
 
 				// draw head
 				r.drawImageTile(head, (int) spriteX, (int) spriteY, animation.getFrame(), direction);
+				if(hair != null) r.drawImageTile(hair.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
 				// draw hat
 				if(hat != null) r.drawImageTile(hat.getGraphic(), (int) spriteX, (int) spriteY, animation.getFrame(), direction);
-
 
 				if(light != null) r.drawLight(light, (int) (x + tileSize / 2), (int) (y));
 

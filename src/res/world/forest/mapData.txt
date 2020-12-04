@@ -26,7 +26,7 @@ grass
 fauna
 
 flower
-100
+200
 grass
 flora
 

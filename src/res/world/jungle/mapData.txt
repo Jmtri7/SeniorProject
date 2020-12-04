@@ -2,13 +2,23 @@ BOARD
 
 20
 888888
-forest
+tropical
 
 ZONES
 
 ROUTES
 
 CRITTERS
+
+crab
+5
+grass
+fauna
+
+flower
+200
+grass
+flora
 
 PLAYER
 

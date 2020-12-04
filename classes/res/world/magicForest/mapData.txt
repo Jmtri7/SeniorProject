@@ -15,16 +15,16 @@ wisp
 any
 fauna
 
-crab
-5
+death clan warrior
+2
 fungi
 fauna
 
 PLAYER
 
 human
-15
-15
+14
+1
 
 ITEMS
 

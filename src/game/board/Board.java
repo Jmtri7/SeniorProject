@@ -89,6 +89,7 @@ public class Board {
 				
 				int mapData = structureMap.getP()[i * structureMap.getW() + j];
 				if(mapData == 0xff000000) this.addWall(j, i, "none");
+				if(mapData == 0xffee5522) this.addCampfire(j, i);
 				if(mapData == 0xff0000ff) {
 					if(this.getTile(j, i).getTerrain().getType().equals("fungi")) {
 						this.addDecor(j, i, "greatMushroom");
@@ -100,7 +101,7 @@ public class Board {
 				if(mapData == 0xff907060) this.addWall(j, i, "fence");
 				if(mapData == 0xff806050) this.addWall(j, i, "smallTable");
 				if(mapData == 0xffff0000) this.addWall(j, i, "grave");
-				if(mapData == 0xff009900) this.addWall(j, i, "cactus");
+				if(mapData == 0xff009900) this.addShrub(j, i);
 				if(mapData == 0xff777777) this.addBoulder(j, i);
 				if(mapData == 0xff00ff00) this.addTree(j, i);
 			}
@@ -221,7 +222,7 @@ public class Board {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("woodcutters");
 			this.equipItem(spawn, "leatherHat");
-			this.equipItem(spawn, "peasantGownBrown");
+			this.equipItem(spawn, "peasantGownGreen");
 			this.equipItem(spawn, "leatherShoes");
 			this.equipItem(spawn, "axe");
 
@@ -231,7 +232,7 @@ public class Board {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("miners");
 			this.equipItem(spawn, "leatherHat");
-			this.equipItem(spawn, "peasantGownBrown");
+			this.equipItem(spawn, "peasantGownGray");
 			this.equipItem(spawn, "leatherShoes");
 			this.equipItem(spawn, "pickaxe");
 
@@ -260,6 +261,17 @@ public class Board {
 			spawn  = new Humanoid(tile, "human");
 			spawn.setFaction("wild");
 			this.equipItem(spawn, "pirateHat");
+			this.equipItem(spawn, "pirateShirt");
+			this.equipItem(spawn, "redPants");
+			this.equipItem(spawn, "leatherShoes");
+			this.equipItem(spawn, "shortsword");
+
+			spawn.setTag("pirate");
+		}
+		else if(type.equals("pirateCaptain")) {
+			spawn  = new Humanoid(tile, "human");
+			spawn.setFaction("wild");
+			this.equipItem(spawn, "captainsHat");
 			this.equipItem(spawn, "pirateShirt");
 			this.equipItem(spawn, "redPants");
 			this.equipItem(spawn, "leatherShoes");
@@ -343,6 +355,13 @@ public class Board {
 		zones.add(new Zone(x, y, width, height, ambientColor, music));
 	}
 
+	public void addCampfire(int x, int y) {
+		Tile tile = this.getTile(x, y);
+		Grass grass = new Grass(tile, "campfire", 0xffffffff, 150);
+		grass.setInvincible(true);
+		grass.setBlocking(true);
+	}
+
 	public void addDecor(int x, int y, String type) {
 		Tile tile = this.getTile(x, y);
 		Wall wall = new Wall(tile, type);
@@ -381,9 +400,19 @@ public class Board {
 		wall.setFaction("trees");
 		wall.setDamageNoise("chopping");
 		wall.setDeathNoise("treeDeath");
-		wall.setRespawns(true);
-		wall.setRespawnTime(10f);
+		//wall.setRespawns(true);
+		//wall.setRespawnTime(10f);
 		wall.setWeakness("chopping");
+	}
+
+	public void addShrub(int x, int y) {
+		Tile tile = this.getTile(x, y);
+		Wall wall = null;
+		if(tile.getTerrain().getType().equals("sand")) {
+			wall = new Wall(tile, "cactus");
+		} else {
+			wall = new Wall(tile, "bush");
+		}
 	}
 
 	public void addBoulder(int x, int y) {
@@ -393,8 +422,8 @@ public class Board {
 		wall.setFaction("boulders");
 		wall.setDamageNoise("mining");
 		wall.setDeathNoise("mining");
-		wall.setRespawns(true);
-		wall.setRespawnTime(10f);
+		//wall.setRespawns(true);
+		//wall.setRespawnTime(10f);
 		wall.setWeakness("picking");
 	}
 

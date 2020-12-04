@@ -144,6 +144,8 @@ public class BoardBuilder {
 	}
 
 	static void LoadAssets() {
+		ImageLoader.loadImage("campfire", "/res/structure/campfire.png", 40, 40);
+
 		ImageLoader.loadImage("animatedGrass", "/res/tile/animatedGrass.png", 20, 40);
 		ImageLoader.loadImage("animatedWater", "/res/tile/animatedWater.png", 20, 40);
 		ImageLoader.loadImage("animatedSludge", "/res/tile/animatedSludge.png", 20, 40);
@@ -286,7 +288,7 @@ public class BoardBuilder {
 						name,
 						hp, dmg,
 						new ImageTile("/res/creature/" + name + ".png", tileX, tileY),
-						new Light(tileY * 2, lightColor),
+						new Light((int) (tileY * 1.5), lightColor),
 						injurySound,
 						deathSound,
 						attackSound,

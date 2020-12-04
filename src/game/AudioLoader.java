@@ -14,18 +14,20 @@ public class AudioLoader {
 	}
 
 	public static SoundClip getAudio(String id) {
-		SoundClip image = map.get(id);
+		SoundClip clip = map.get(id);
 
-		if(image == null) System.out.println("Failed to get audio: (" + id + ")");
+		if(clip == null) System.out.println("Failed to get audio: (" + id + ")");
 
-		return image;
+		return clip;
 	}
 
 	// attempts to load from map first
 	public static SoundClip safeLoad(String id, String path) {
-		SoundClip image = map.get(id);
+		SoundClip clip = map.get(id);
 
-		if(image == null) {
+		//System.out.println("Audio (" + id + ") was already loaded.");
+
+		if(clip == null) {
 			System.out.println("Audio (" + id + ") wasn't pre loaded.");
 
 			map.put(id, new SoundClip(path));

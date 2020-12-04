@@ -212,13 +212,11 @@ public class Entity extends Sprite {
 	}
 
 	public void setDamageNoise(String name) {
-		SoundClip noise = AudioLoader.getAudio(name);
-		if(noise == null) this.damageNoise = AudioLoader.safeLoad(name, "/res/sounds/" + name + ".wav");
+		this.damageNoise = AudioLoader.safeLoad(name, "/res/sounds/" + name + ".wav");
 	}
 
 	public void setDeathNoise(String name) {
-		SoundClip noise = AudioLoader.getAudio(name);
-		if(noise == null) this.deathNoise = AudioLoader.safeLoad(name, "/res/sounds/" + name + ".wav");
+		this.deathNoise = AudioLoader.safeLoad(name, "/res/sounds/" + name + ".wav");
 	}
 
 	public void setFaction(String factionName) {
@@ -239,5 +237,9 @@ public class Entity extends Sprite {
 
 	public Species getSpecies() {
 		return species;
+	}
+
+	public Light getLight() {
+		return light;
 	}
 }

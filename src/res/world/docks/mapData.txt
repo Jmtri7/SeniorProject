@@ -30,17 +30,17 @@ end
 CRITTERS
 
 man
-2
+1
 stone
 fauna
 
 peasant
-2
+1
 stone
 fauna
 
 maid
-2
+1
 stone
 fauna
 

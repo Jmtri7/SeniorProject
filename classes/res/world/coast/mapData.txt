@@ -2,7 +2,7 @@ BOARD
 
 20
 888888
-cheerful
+tropical
 
 ZONES
 
@@ -27,12 +27,7 @@ CREATURES
 
 pirate
 27
-5
-sentry
-
-pirate
-30
-3
+16
 sentry
 
 PORTALS
@@ -52,7 +47,7 @@ beach
 boarding
 27
 2
-25
-25
+14
+20
 
 END

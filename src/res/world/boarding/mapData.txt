@@ -27,7 +27,7 @@ ITEMS
 
 CREATURES
 
-rabbit
+pirate
 14
 10
 patrol

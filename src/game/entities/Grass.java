@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import engine.GameContainer;
 import engine.Renderer;
 import engine.gfx.ImageTile;
+import engine.gfx.Light;
 
 import game.ImageLoader;
 
@@ -19,6 +20,12 @@ public class Grass extends Entity {
 	public Grass(Tile tile, String imageId) {
 		super(tile, imageId);
 		setTag(imageId);
+	}
+
+	public Grass(Tile tile, String imageId, int glowColor, int glowRadius) {
+		super(tile, imageId);
+		setTag(imageId);
+		light = new Light(glowRadius, glowColor);
 	}
 
 	public void update(GameContainer gc, float dt) {
@@ -38,5 +45,10 @@ public class Grass extends Entity {
 		spriteX = x - image.getTileW() / 2 + tileSize / 2;
 		spriteY = y - image.getTileH() + tileSize;
 		r.drawImageTile(image, (int) spriteX, (int) spriteY, sway.getFrame(), 0);
+
+		if(light != null){
+			light = new Light(sway.getFrame() * 10 + 100, light.getColor());
+			r.drawLight(light, (int) (x + tileSize / 2), (int) (y));
+		}
 	}
 }

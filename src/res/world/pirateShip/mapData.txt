@@ -102,6 +102,16 @@ pirate
 11
 sentry
 
+pirateCaptain
+24
+14
+sentry
+
+maid
+25
+14
+sentry
+
 PORTALS
 
 docks

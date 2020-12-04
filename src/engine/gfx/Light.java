@@ -39,6 +39,10 @@ public class Light {
 		return lm[x + y * diameter];
 	}
 
+	public int getColor() {
+		return color;
+	}
+
 	public int getRadius() {
 		return radius;
 	}

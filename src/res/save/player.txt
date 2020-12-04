@@ -1,39 +1,31 @@
--7829368
-true
+-8947849
+false
 
 human
 player
 0.3
 
+leatherShoes
+equipment
+true
+
+redPants
+equipment
+true
+
+peasantGownBrown
+equipment
+true
+
+turban
+equipment
+true
+
 shortsword
 equipment
 false
 
-morningstar
-equipment
-true
-
-axe
-equipment
-false
-
 bow
-equipment
-false
-
-royalCrown
-equipment
-true
-
-royalRobe
-equipment
-true
-
-ironPlatelegs
-equipment
-true
-
-leatherShoes
 equipment
 true
 
