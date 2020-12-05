@@ -542,7 +542,7 @@ public class Board {
 	public void render(GameContainer gc, Renderer r) {
 		// BIG PERFORMANCE BOOST WITH RADIUS
 
-		int renderRadius = 14;
+		int renderRadius = (int) (gc.getWidth() / 2 / 20) + 1;
 		Tile playerTile;
 		playerTile = pc.getPlayer().getTile();
 		for(int i = -renderRadius; i < renderRadius; i++) {
@@ -610,13 +610,14 @@ public class Board {
 		r.setCamX(0);
 		r.setCamY(0);
 		int frameWidth = 5;
-		r.drawFillRect(0, 400, 400, 100, 0xffff0000);
-		r.drawFillRect(frameWidth, 400 + frameWidth, 400 - 2 * frameWidth, 100 - 2 * frameWidth, 0xff000000);
+		int inventoryHeight = 100;
+		r.drawFillRect(0, gc.getHeight() - inventoryHeight, gc.getWidth(), inventoryHeight, 0xffff0000);
+		r.drawFillRect(frameWidth, gc.getHeight() - inventoryHeight + frameWidth, gc.getWidth() - 2 * frameWidth, inventoryHeight - 2 * frameWidth, 0xff000000);
 
 		ArrayList<Item> items = pc.getPlayer().getInventory().getItems();
 		for(int i = 0; i < items.size(); i++) {
 			int itemX = i * tileSize + frameWidth;
-			int itemY = 400 + frameWidth;
+			int itemY = gc.getHeight() - inventoryHeight + frameWidth;
 
 			if(i == pc.getPlayer().getInventory().getSelector()) {
 				r.drawFillRect(itemX, itemY, tileSize, tileSize, 0xffffff00);
@@ -638,7 +639,7 @@ public class Board {
 
 		// reset camera for lights
 		float cameraX = pc.getPlayer().getX() - gc.getWidth() / 2;
-		float cameraY = pc.getPlayer().getY() - (gc.getHeight() - 100) / 2;
+		float cameraY = pc.getPlayer().getY() - (gc.getHeight() - inventoryHeight) / 2;
 		r.setCamX((int) cameraX);
 		r.setCamY((int) cameraY);
 

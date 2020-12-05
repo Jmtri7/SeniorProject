@@ -22,7 +22,7 @@ public class AIController {
 	// COMBAT CONSTAINTS
 
 	protected Entity target;
-	protected int aggroRange = 8;
+	protected int aggroRange = 20;
 
 	// TRAVELING CONSTRAINTS
 

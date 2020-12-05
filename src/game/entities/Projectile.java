@@ -34,6 +34,24 @@ public class Projectile extends Entity {
 
 	protected boolean diesOnImpact = true;
 
+	protected Entity owner = null;
+
+	// copy constructor
+	// who dunit
+	public Projectile(Entity owner, Tile tile, String type, int direction) {
+		super(tile, map.get(type).getGraphic());
+
+		this.owner = owner;
+		
+		this.hp = 1;
+		this.hpMax = hp;
+		this.damage = map.get(type).getDamage();
+
+		this.direction = direction;
+		this.blocking = false;
+		this.isFloating = true;
+	}
+
 	// copy constructor
 	public Projectile(Tile tile, String type, int direction) {
 		super(tile, map.get(type).getGraphic());
@@ -86,8 +104,14 @@ public class Projectile extends Entity {
 			Tile destination = tile.getNeighbor(direction);
 			if(destination != null) {
 				this.destination = destination;
-				this.destination.hit(damage, "piercing");
-				this.tile.hit(damage, "piercing");
+				if(this.owner == null) {
+					this.destination.hit(damage, "piercing");
+					this.tile.hit(damage, "piercing");
+				} else {
+					this.destination.hit(this.owner, damage, "piercing");
+					this.tile.hit(this.owner, damage, "piercing");
+				}
+				
 				attacking.start();
 				animation = attacking;
 			}

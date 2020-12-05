@@ -12,8 +12,11 @@ public class GameContainer implements Runnable {
 
 	private final double UPDATE_CAP = 1.0 / 60.0;
 
-	private int width = 400, height = 500;
+	// -10 because of taskbar
+	private int hdWidth = 1920, hdHeight = 1080 - 30;
+
 	private float scale = 2f;
+	private int width = (int) (hdWidth / scale), height = (int) (hdHeight / scale);
 	private String title = "My Game";
 
 	public GameContainer(AbstractGame game) {

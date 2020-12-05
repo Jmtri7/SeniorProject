@@ -271,7 +271,10 @@ public class Humanoid extends Creature {
 				if(weapon != null) {
 					damage += weapon.getDamageModifier();
 
-					if(weapon.getTag().equals("bow")) new Projectile(destination, "arrow", direction);
+					if(weapon.getTag().equals("bow")) {
+						Projectile arrow = new Projectile(this, destination, "arrow", direction);
+						//arrow.setFaction(this.getFaction().getName());
+					}
 					else this.destination.hit(this, damage, weapon.getDamageType());
 				} else {
 					this.destination.hit(this, damage, "unarmed");

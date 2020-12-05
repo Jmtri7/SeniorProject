@@ -29,15 +29,17 @@ public class Window {
 		frame.add(canvas, BorderLayout.CENTER);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
+		//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//frame.setResizable(false);
 		frame.setVisible(true);
 
 		canvas.createBufferStrategy(2);
 		bs = canvas.getBufferStrategy();
-		g = bs.getDrawGraphics();
+		
 	}
 
 	public void update() {
+		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), null);
 		bs.show();
 	}
