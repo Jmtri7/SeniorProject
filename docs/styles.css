@@ -1,0 +1,65 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+html, body {
+  	background-color: aqua;
+  	height: 100%;
+}
+
+/* banners */
+
+.banner {
+	height: 100px;
+	font-size: 50px;
+	background-color: white;
+	text-align: center;
+}
+
+/* post feed */
+
+.postDisplay {
+	padding: 1%;
+	width: auto;
+}
+
+.post {
+	display: inline-block;
+	padding: 1%;
+	margin-bottom: 1%;
+	width: 98%;
+	background-color: white;
+}
+
+.media {
+	width: 50%;
+}
+
+/* colors */
+
+.coral {
+	background-color: coral;
+}
+
+.aquamarine {
+	background-color: aqua;
+}
+
+/* flexers */
+
+.cols {
+	flex-direction: row;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.rows {
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
